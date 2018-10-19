@@ -1,0 +1,22 @@
+<mat-sidenav-container class="app-sidenav-container" autosize>
+    <mat-sidenav #sidenav class="app-sidenav mat-elevation-z10" [opened]="!isScreenSmall()" [mode]="isScreenSmall() ? 'over' : 'side'">
+        <mat-toolbar color="primary">Projects</mat-toolbar>
+        <mat-nav-list>
+            <mat-list-item *ngFor="let project of projects">
+                <a matLine href="#">
+                    <!-- <mat-icon svgIcon="{{user.projectName}}"></mat-icon>{{ user.projectName }} -->
+                    {{project.projectName}}
+                </a>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <div class="app-sidenav-content">
+        <app-toolbar (toggleSidenav)="sidenav.toggle()"></app-toolbar>
+
+        <div class="wrapper">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+</mat-sidenav-container>
