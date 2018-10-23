@@ -1,0 +1,87 @@
+<!-- Material form login -->
+<mat-card>
+
+  <mat-card-header class="info-color white-text text-center py-4">
+    <h5>
+      <strong>Sign in</strong>
+    </h5>
+  </mat-card-header>
+
+
+  <!--Card content-->
+  <mat-card-content class="px-lg-5 pt-0">
+
+    <!-- Form -->
+    <form class="example-container" [formGroup]="loginFormGroup">
+
+      <!-- E-mail -->
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Email" [formControl]="loginFormGroup.controls.email" [errorStateMatcher]="matcher">
+        <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+        <mat-error *ngIf="loginFormGroup.controls.email.hasError('email') && !loginFormGroup.controls.email.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="loginFormGroup.controls.email.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Password -->
+      <div class="row">
+        <div class="col-lg-11">
+          <mat-form-field>
+
+            <input [type]="showPassword.checked ? 'text' : 'password'" matInput placeholder="New password"
+              [formControl]="loginFormGroup.controls.password" [errorStateMatcher]="matcher">
+            <mat-icon *ngIf="showPassword" #visibilityIcon class="tb-icon" (click)="togglePassword()" matSuffix>
+              {{showPassword ? visibility : visibility_off}}
+            </mat-icon>
+            <!-- <mat-icon *ngIf="!showPassword" #visibilityIconOff class="tb-icon" (click)="togglePassword()" matSuffix>visibility_off</mat-icon> -->
+            <mat-error *ngIf="loginFormGroup.controls.password.hasError('required', 'password')">
+              Please enter your new password
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-1">
+          <mat-checkbox #showPassword>Show password</mat-checkbox>
+        </div>
+      </div>
+      <div style="margin-bottom:20px;">
+        <div>
+          <!-- Remember me -->
+          <mat-checkbox>Remember me</mat-checkbox>
+        </div>
+        <div>
+          <!-- Forgot password -->
+          <a matLine [routerLink]="['/shell/forgotPassword']">Forgot Password?</a>
+        </div>
+      </div>
+
+      <!-- Sign in button -->
+      <div class="text-center" style="margin-bottom:20px;">
+        <button mat-raised-button color="primary" (click)="loginUser()">Login</button>
+      </div>
+
+      <!-- Register -->
+      <p>Not a member?
+        <a matLine [routerLink]="['/shell/register']">Register</a>
+      </p>
+
+      <!-- Social login -->
+      <p style="margin-top:10px;">or sign in with:</p>
+      <div class="col-md-4">
+        <a>
+          <i class="fa fa-facebook-official" aria-hidden="true"></i>
+        </a>
+        <a>
+          <i class="fa fa-google" aria-hidden="true"></i>
+        </a>
+      </div>
+
+    </form>
+    <!-- Form -->
+
+  </mat-card-content>
+
+</mat-card>
+<!-- Material form login -->

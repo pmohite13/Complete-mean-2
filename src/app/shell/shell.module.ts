@@ -6,30 +6,53 @@ import { MainContentComponent } from './components/main-content/main-content.com
 import { ShellComponent } from './shell.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from '../shared/material/material.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { SharedModule } from '../shared/shared.module';
+import { ApplyToProjectComponent } from './components/apply-to-project/apply-to-project.component';
+import { NewVolunteerComponent } from './components/new-volunteer/new-volunteer.component';
+import { AuthGuardService } from '../core/auth-guard.service';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { OrganizationComponent } from './components/organization/organization.component';
 
 const routes: Routes = [
   {
     path: '', component: ShellComponent,
     children: [
+      { path: 'forgotPassword', component: ForgotPasswordComponent },
+      { path: 'register', component: RegisterComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'newVolunteer', component: NewVolunteerComponent, canActivate: [AuthGuardService] },
+      { path: 'organization', component: OrganizationComponent, canActivate: [AuthGuardService] },
+      { path: 'applyToProject/:id', component: ApplyToProjectComponent },
+      { path: ':id', component: MainContentComponent },
       { path: '', component: MainContentComponent }
     ]
-  }
+  },
+  { path: '**', redirectTo: '' }
 ]
 @NgModule({
   imports: [
     CommonModule,
-    //BrowserAnimationsModule,
     RouterModule.forChild(routes),
     MaterialModule,
+    FlexLayoutModule,
+    MDBBootstrapModule,
     SharedModule
   ],
   declarations: [
     ToolbarComponent,
     SidenavComponent,
     MainContentComponent,
-    ShellComponent
+    ShellComponent,
+    ApplyToProjectComponent,
+    NewVolunteerComponent,
+    RegisterComponent,
+    LoginComponent,
+    ForgotPasswordComponent,
+    OrganizationComponent
   ]
 })
 export class ShellModule { }

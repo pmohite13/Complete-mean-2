@@ -10,25 +10,29 @@ import { DataFilterService } from './data-filter.service';
 import { Sorter } from './sorter';
 import { TrackByService } from './trackby.service';
 import { EnsureModuleLoadedOnceGuard } from '../shared/ensureModuleLoadedOnceGuard';
+import { AuthService } from './auth.service';
+import { AuthGuardService } from './auth-guard.service';
+import { RegisterService } from './register.service';
+
 
 @NgModule({
-  imports: [ 
+  imports: [
     //Can use with Angular 4.3+ to 
-    HttpClientModule, 
+    HttpClientModule,
     //Can use to override default names for XSRF cookie and header
     // HttpClientXsrfModule.withOptions({
     //   cookieName: 'My-XSRF-TOKEN',
     //   headerName: 'My-X-XSRF-TOKEN',
     // })
   ],
-  providers: [ DataService, DataFilterService, Sorter, TrackByService] 
+  providers: [DataService, DataFilterService, Sorter, TrackByService, AuthService, AuthGuardService, RegisterService]
 })
 export class CoreModule extends EnsureModuleLoadedOnceGuard {    //Ensure that CoreModule is only loaded into AppModule
 
   //Looks for the module in the parent injector to see if it's already been loaded (only want it loaded once)
-  constructor( @Optional() @SkipSelf() parentModule: CoreModule) {
+  constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
     super(parentModule);
-  }  
+  }
 
 }
 

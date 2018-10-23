@@ -235,9 +235,9 @@ filter-textbox {
     margin-top: 5px;
 }
 
-form {
+/* form {
     width:50%;
-}
+} */
 
 .editForm .ng-invalid {
     border-left: 5px solid #a94442;

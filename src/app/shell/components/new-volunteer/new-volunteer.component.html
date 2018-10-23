@@ -1,0 +1,68 @@
+<div class="example-container" [formGroup]="volunteerFormGroup">
+  <div>
+    <label>Prefix: </label>
+    <mat-radio-group formControlName="prefix">
+      <mat-radio-button value="auto">Mr</mat-radio-button>
+      <mat-radio-button value="always">Ms</mat-radio-button>
+      <mat-radio-button value="never">Other</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <mat-form-field>
+    <input matInput formControlName="dateOfBirth" [matDatepicker]="dateOfBirth" placeholder="Date of Birth">
+    <mat-datepicker-toggle matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
+    <mat-datepicker #dateOfBirth></mat-datepicker>
+  </mat-form-field>
+
+  <div>
+    <label>Gender: </label>
+    <mat-radio-group formControlName="gender">
+      <mat-radio-button value="auto">Male</mat-radio-button>
+      <mat-radio-button value="always">Female</mat-radio-button>
+      <mat-radio-button value="never">Other</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <mat-form-field>
+    <mat-select placeholder="Toppings" formControlName="workArea" multiple>
+      <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Qualification" formControlName="qualification">
+      <mat-option *ngFor="let food of foods" [value]="food.value">
+        {{food.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput formControlName="address1" placeholder="Address 1"></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput formControlName="address2" placeholder="Address 2"></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput formControlName="pincode" placeholder="Pincode">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select formControlName="state" placeholder="State" (selectionChange)="stateChange($event.value)">
+      <mat-option *ngFor="let state of states" [value]="state.id">
+        {{state.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select formControlName="city" placeholder="City">
+      <mat-option *ngFor="let city of cities" [value]="city.id">
+        {{city.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>

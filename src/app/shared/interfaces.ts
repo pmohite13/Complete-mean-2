@@ -19,12 +19,27 @@ export interface ICustomer {
 export interface IProject {
     _id?: string;
     projectName: string;
-    projectDescription: string;   
+    projectDescription: string;
+}
+
+export interface IUser {
+    firstName?: string;
+    lastName: string;
+    email: string;
+    phone: number;
+    password: string;
 }
 
 export interface IState {
     abbreviation: string;
     name: string;
+}
+
+export interface ICity {
+    abbreviation: string;
+    name: string;
+    state: IState,
+    stateId: string
 }
 
 export interface IOrder {
@@ -48,4 +63,10 @@ export interface ICustomerResponse {
     customer: ICustomer;
     status: boolean;
     error: string;
+}
+
+export interface IAuthResponse {
+    token: string;
+    auth: boolean; 
+    error: string; 
 }

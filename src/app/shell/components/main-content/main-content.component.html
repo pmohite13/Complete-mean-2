@@ -1,3 +1,20 @@
-<mat-card>
-  <h1>Main Content</h1>
-</mat-card>
+<!-- <mat-card>
+  <mat-card-header>
+    
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      <a matLine [routerLink]="['/shell/newVolunteer']">
+        <mat-icon svgIcon="svg-1"></mat-icon>Goto Volunteer
+      </a>
+    </p>
+  </mat-card-content>
+</mat-card> -->
+
+
+<mat-grid-list cols="4" rowHeight="2:2">
+  <mat-grid-tile class="my-class" *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows"
+    [style.background]="tile.color" (click)="onTileClicked(tile)">
+    {{tile.text}}
+  </mat-grid-tile>
+</mat-grid-list>

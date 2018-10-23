@@ -1,0 +1,28 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }
+  .fa-facebook-official{
+    // color:black;
+    color: #46629e;
+    font-size: 30px;
+  }
+  .fa-facebook-official:hover {
+    color: #46629e;
+  }
+
+  .fa-google{
+    // color:black;
+    color: #ea4335;
+    font-size: 30px;
+  }
+  .fa-google:hover {
+    color: #ea4335;
+  }
+  .fa {
+    padding-right: 5px;
+  }

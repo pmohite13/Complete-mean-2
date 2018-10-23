@@ -1,7 +1,8 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../../../core/data.service';
 import { IPagedResults, IProject } from '../../../shared/interfaces';
+import { MatSidenav } from '@angular/material';
 
 const SMALL_WIDTH_BREAKPOINT = 720;
 
@@ -19,6 +20,8 @@ export class SidenavComponent implements OnInit {
   totalRecords: number = 0;
   pageSize: number = 10;
 
+  @ViewChild(MatSidenav) sidenav: MatSidenav;
+
   constructor(private zone: NgZone,
     private router: Router,
     private dataService: DataService) {
@@ -27,6 +30,11 @@ export class SidenavComponent implements OnInit {
 
   ngOnInit() {
     this.getProjectList(1);
+    this.router.events.subscribe(() => {
+      if (this.isScreenSmall()) {
+        this.sidenav.close();
+      }
+    });
   }
 
   isScreenSmall(): boolean {
@@ -34,10 +42,10 @@ export class SidenavComponent implements OnInit {
   }
 
   getProjectList(page: number) {
-    debugger;
+
     this.dataService.getProjectsPage((page - 1) * this.pageSize, this.pageSize)
       .subscribe((response: IPagedResults<IProject[]>) => {
-        debugger;
+
         this.projects = this.filteredProjects = response.results;
         this.totalRecords = response.totalRecords;
       },

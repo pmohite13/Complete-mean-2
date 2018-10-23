@@ -2,10 +2,9 @@
     <mat-sidenav #sidenav class="app-sidenav mat-elevation-z10" [opened]="!isScreenSmall()" [mode]="isScreenSmall() ? 'over' : 'side'">
         <mat-toolbar color="primary">Projects</mat-toolbar>
         <mat-nav-list>
-            <mat-list-item *ngFor="let project of projects">
-                <a matLine href="#">
-                    <!-- <mat-icon svgIcon="{{user.projectName}}"></mat-icon>{{ user.projectName }} -->
-                    {{project.projectName}}
+            <mat-list-item *ngFor="let project of projects">            
+                <a matLine [routerLink]="['/shell/applyToProject', project._id]">
+                    <mat-icon svgIcon="svg-1"></mat-icon>{{ project.projectName }}
                 </a>
             </mat-list-item>
         </mat-nav-list>

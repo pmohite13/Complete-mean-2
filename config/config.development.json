@@ -2,5 +2,6 @@
     "databaseConfig": {
         "host": "localhost",
         "database": "customermanager"
-    }
+    },
+    "secret": "supersecret"    
 }

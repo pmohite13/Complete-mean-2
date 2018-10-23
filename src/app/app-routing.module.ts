@@ -9,13 +9,15 @@ import { IRouting } from './shared/interfaces';
 import { DemoComponent } from './demo/demo.component';
 
 const routes: Routes = [
-  {path: '', loadChildren:'./shell/shell.module#ShellModule'},
+  { path: 'shell', loadChildren: './shell/shell.module#ShellModule' },
   // { path: '', pathMatch: 'full', redirectTo: '/customers' },
+  { path: 'customers', component: CustomersComponent },
   { path: 'demo', component: DemoComponent },
- // { path: 'customers', component: CustomersComponent },
- // { path: 'customers/:id', component: CustomerEditComponent },
+  { path: "**", redirectTo: "shell" }
+  // { path: 'customers', component: CustomersComponent },
+  // { path: 'customers/:id', component: CustomerEditComponent },
   //{ path: 'customers/:id', component: CustomerEditReactiveComponent },
- // { path: '**', redirectTo: '/customers' } //catch any unfound routes and redirect to home page
+  // { path: '**', redirectTo: '/customers' } //catch any unfound routes and redirect to home page
 ];
 
 @NgModule({
@@ -24,9 +26,9 @@ const routes: Routes = [
 })
 export class AppRoutingModule {
   static components = [
-    CustomersComponent, 
-    CustomerEditComponent, 
-    CustomerEditReactiveComponent, 
+    CustomersComponent,
+    CustomerEditComponent,
+    CustomerEditReactiveComponent,
     CustomersGridComponent
   ];
 }
