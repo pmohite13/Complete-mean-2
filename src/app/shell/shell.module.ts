@@ -16,6 +16,7 @@ import { LoginComponent } from './components/login/login.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { OrganizationComponent } from './components/organization/organization.component';
+import { MAT_DATE_LOCALE } from '@angular/material';
 
 const routes: Routes = [
   {
@@ -53,6 +54,9 @@ const routes: Routes = [
     LoginComponent,
     ForgotPasswordComponent,
     OrganizationComponent
-  ]
+  ],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+  ],
 })
 export class ShellModule { }

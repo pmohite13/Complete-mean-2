@@ -8,7 +8,7 @@ import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/htt
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
-import { ICustomer, IOrder, IState, IPagedResults, ICustomerResponse, IProject, ICity } from '../shared/interfaces';
+import { ICustomer, IOrder, IState, IPagedResults, ICustomerResponse, IProject, ICity, IWorkArea, IQualification, IVolunteer, IVolunteerResponse } from '../shared/interfaces';
 
 @Injectable()
 export class DataService {
@@ -17,6 +17,9 @@ export class DataService {
     baseProjectsUrl: string = '/api/projects';
     baseStatesUrl: string = '/api/states';
     baseCitiesUrl: string = '/api/cities';
+    baseWorkAreaUrl: string = '/api/workAreas';
+    baseQualificationUrl: string = '/api/qualifications';
+    baseVolunteerUrl: string = '/api/volunteers';
 
     constructor(private http: HttpClient) {
 
@@ -96,7 +99,18 @@ export class DataService {
             );
     }
 
-    
+    insertVolunteer(volunteer: IVolunteer): Observable<IVolunteer> {
+        return this.http.post<IVolunteerResponse>(this.baseVolunteerUrl, volunteer)
+            .pipe(
+                map((data) => {
+                    console.log('insertVolunteer status: ' + data.status);
+                    return data.volunteer;
+                }),
+                catchError(this.handleError)
+            );
+    }
+
+
 
     updateCustomer(customer: ICustomer): Observable<ICustomer> {
         return this.http.put<ICustomerResponse>(this.baseUrl + '/' + customer._id, customer)
@@ -116,6 +130,13 @@ export class DataService {
             );
     }
 
+    getWorkAreas(): Observable<IWorkArea[]> {
+        return this.http.get<IWorkArea[]>(this.baseWorkAreaUrl)
+            .pipe(
+                catchError(this.handleError)
+            );
+    }
+
     getStates(): Observable<IState[]> {
         return this.http.get<IState[]>(this.baseStatesUrl)
             .pipe(
@@ -123,15 +144,15 @@ export class DataService {
             );
     }
 
-    getCitiesForState(stateId: string): Observable<ICity[]> {
+    getCitiesForState(stateId: number): Observable<ICity[]> {
         return this.http.get<ICity[]>(this.baseCitiesUrl + '/' + stateId)
             .pipe(
                 catchError(this.handleError)
             );
     }
 
-    getQualifications(): Observable<IState[]> {
-        return this.http.get<IState[]>(this.baseStatesUrl)
+    getQualifications(): Observable<IQualification[]> {
+        return this.http.get<IQualification[]>(this.baseQualificationUrl)
             .pipe(
                 catchError(this.handleError)
             );

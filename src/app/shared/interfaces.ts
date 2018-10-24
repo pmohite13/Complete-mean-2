@@ -16,6 +16,23 @@ export interface ICustomer {
     orderTotal?: number;
 }
 
+export interface IVolunteer {
+    _id?: string;
+    prefix: number;
+    dateOfBirth: Date;
+    gender: number;
+    workAreas: IWorkArea[];
+    qualification: IQualification;
+    qualificationId: number;
+    city: ICity;
+    cityId: number;
+    state?: IState;
+    stateId?: number;
+    pincode: number;
+    address1: string;
+    address2: string;
+}
+
 export interface IProject {
     _id?: string;
     projectName: string;
@@ -31,11 +48,23 @@ export interface IUser {
 }
 
 export interface IState {
+    id: number;
     abbreviation: string;
     name: string;
 }
 
+export interface IWorkArea {
+    id: number;
+    name: string;
+}
+
+export interface IQualification {
+    id: number;
+    name: string;
+}
+
 export interface ICity {
+    id: number;
     abbreviation: string;
     name: string;
     state: IState,
@@ -65,8 +94,15 @@ export interface ICustomerResponse {
     error: string;
 }
 
+export interface IVolunteerResponse {
+    volunteer: IVolunteer;
+    status: boolean;
+    error: string;
+}
+
+
 export interface IAuthResponse {
     token: string;
-    auth: boolean; 
-    error: string; 
+    auth: boolean;
+    error: string;
 }

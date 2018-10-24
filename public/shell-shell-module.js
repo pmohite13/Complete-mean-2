@@ -12170,7 +12170,7 @@ var MainContentComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"example-container\" [formGroup]=\"volunteerFormGroup\">\n  <div>\n    <label>Prefix: </label>\n    <mat-radio-group formControlName=\"prefix\">\n      <mat-radio-button value=\"auto\">Mr</mat-radio-button>\n      <mat-radio-button value=\"always\">Ms</mat-radio-button>\n      <mat-radio-button value=\"never\">Other</mat-radio-button>\n    </mat-radio-group>\n  </div>\n\n  <mat-form-field>\n    <input matInput formControlName=\"dateOfBirth\" [matDatepicker]=\"dateOfBirth\" placeholder=\"Date of Birth\">\n    <mat-datepicker-toggle matSuffix [for]=\"dateOfBirth\"></mat-datepicker-toggle>\n    <mat-datepicker #dateOfBirth></mat-datepicker>\n  </mat-form-field>\n\n  <div>\n    <label>Gender: </label>\n    <mat-radio-group formControlName=\"gender\">\n      <mat-radio-button value=\"auto\">Male</mat-radio-button>\n      <mat-radio-button value=\"always\">Female</mat-radio-button>\n      <mat-radio-button value=\"never\">Other</mat-radio-button>\n    </mat-radio-group>\n  </div>\n\n  <mat-form-field>\n    <mat-select placeholder=\"Toppings\" formControlName=\"workArea\" multiple>\n      <mat-option *ngFor=\"let topping of toppingList\" [value]=\"topping\">{{topping}}</mat-option>\n    </mat-select>\n  </mat-form-field>\n\n  <mat-form-field>\n    <mat-select placeholder=\"Qualification\" formControlName=\"qualification\">\n      <mat-option *ngFor=\"let food of foods\" [value]=\"food.value\">\n        {{food.viewValue}}\n      </mat-option>\n    </mat-select>\n  </mat-form-field>\n\n  <mat-form-field>\n    <textarea matInput formControlName=\"address1\" placeholder=\"Address 1\"></textarea>\n  </mat-form-field>\n\n  <mat-form-field>\n    <textarea matInput formControlName=\"address2\" placeholder=\"Address 2\"></textarea>\n  </mat-form-field>\n\n  <mat-form-field>\n    <input matInput formControlName=\"pincode\" placeholder=\"Pincode\">\n  </mat-form-field>\n\n  <mat-form-field>\n    <mat-select formControlName=\"state\" placeholder=\"State\" (selectionChange)=\"stateChange($event.value)\">\n      <mat-option *ngFor=\"let state of states\" [value]=\"state.id\">\n        {{state.name}}\n      </mat-option>\n    </mat-select>\n  </mat-form-field>\n\n  <mat-form-field>\n    <mat-select formControlName=\"city\" placeholder=\"City\">\n      <mat-option *ngFor=\"let city of cities\" [value]=\"city.id\">\n        {{city.name}}\n      </mat-option>\n    </mat-select>\n  </mat-form-field>\n\n</div>"
+module.exports = "<mat-card>\n  <mat-card-header class=\"info-color white-text text-center py-4\">\n    <h5>\n      <strong>Volunteer (*Required)</strong>\n    </h5>\n  </mat-card-header>\n  <mat-card-content>\n    <form class=\"example-container\" [formGroup]=\"volunteerFormGroup\">\n      <div style=\"margin-top:20px;\">\n        <label>Prefix*: </label>\n        <mat-radio-group class=\"ml5\" [formControl]=\"volunteerFormGroup.controls.prefix\">\n          <mat-radio-button value=\"1\" [checked]=\"prefixMr === 'true'\">Mr</mat-radio-button>\n          <mat-radio-button value=\"2\" [checked]=\"prefixMs === 'true'\">Ms</mat-radio-button>\n          <mat-radio-button value=\"3\" [checked]=\"prefixOther === 'true'\">Other</mat-radio-button>\n        </mat-radio-group>\n      </div>\n\n      <mat-form-field>\n        <input matInput [formControl]=\"volunteerFormGroup.controls.dateOfBirth\" [matDatepicker]=\"dateOfBirth\" [max]=\"maxDate\"\n          placeholder=\"Date of Birth*\" [errorStateMatcher]=\"matcher\">\n        <mat-hint class=\"hint-fonts\">Minimum Age is 18 years!</mat-hint>\n        <mat-datepicker-toggle matSuffix [for]=\"dateOfBirth\"></mat-datepicker-toggle>\n        <mat-datepicker #dateOfBirth></mat-datepicker>\n        <mat-error *ngIf=\"volunteerFormGroup.controls.dateOfBirth.hasError('required')\">\n          Date of Birth is <strong>required</strong>\n        </mat-error>\n      </mat-form-field>\n\n      <div class=\"mt10\">\n        <label>Gender*: </label>\n        <mat-radio-group class=\"ml5\" [formControl]=\"volunteerFormGroup.controls.gender\">\n          <mat-radio-button value=\"1\" [checked]=\"male === 'true'\">Male</mat-radio-button>\n          <mat-radio-button value=\"2\" [checked]=\"female === 'true'\">Female</mat-radio-button>\n          <mat-radio-button value=\"3\" [checked]=\"other === 'true'\">Other</mat-radio-button>\n        </mat-radio-group>\n      </div>\n\n      <mat-form-field>\n        <mat-select placeholder=\"I am interested to volunteer in*\" [formControl]=\"volunteerFormGroup.controls.workArea\"\n          multiple>\n          <mat-option *ngFor=\"let workArea of workAreas\" [value]=\"workArea\">{{workArea.name}}</mat-option>\n        </mat-select>\n      </mat-form-field>\n\n      <mat-form-field>\n        <mat-select placeholder=\"Qualification*\" [formControl]=\"volunteerFormGroup.controls.qualification\">\n          <mat-option *ngFor=\"let qualification of qualifications\" [value]=\"qualification\">\n            {{qualification.name}}\n          </mat-option>\n        </mat-select>\n      </mat-form-field>\n\n      <mat-form-field>\n        <textarea matInput [formControl]=\"volunteerFormGroup.controls.address1\" placeholder=\"Address 1\"></textarea>\n      </mat-form-field>\n\n      <mat-form-field>\n        <textarea matInput [formControl]=\"volunteerFormGroup.controls.address2\" placeholder=\"Address 2\"></textarea>\n      </mat-form-field>\n\n      <mat-form-field>\n        <input matInput [formControl]=\"volunteerFormGroup.controls.pincode\" (onkeypress)=\"pincodeKeyUp($event)\"\n          placeholder=\"Pincode*\">\n      </mat-form-field>\n\n      <mat-form-field>\n        <mat-select [formControl]=\"volunteerFormGroup.controls.state\" placeholder=\"State*\" (selectionChange)=\"stateChange($event.value)\">\n          <mat-option *ngFor=\"let state of states\" [value]=\"state\">\n            {{state.name}}\n          </mat-option>\n        </mat-select>\n      </mat-form-field>\n\n      <mat-form-field>\n        <mat-select [formControl]=\"volunteerFormGroup.controls.city\" placeholder=\"City*\">\n          <mat-option *ngFor=\"let city of cities\" [value]=\"city\">\n            {{city.name}}\n          </mat-option>\n        </mat-select>\n      </mat-form-field>\n\n      <!-- Sign up button -->\n      <div class=\"text-center\">\n        <button mat-raised-button color=\"primary\" (click)=\"submit()\">Finish</button>\n      </div>\n    </form>\n  </mat-card-content>\n\n</mat-card>"
 
 /***/ }),
 
@@ -12181,7 +12181,7 @@ module.exports = "<div class=\"example-container\" [formGroup]=\"volunteerFormGr
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".example-container {\n  display: flex;\n  flex-direction: column; }\n\n.example-container > * {\n  width: 100%; }\n"
+module.exports = ".example-container {\n  display: flex;\n  flex-direction: column; }\n\n.example-container > * {\n  width: 100%; }\n\n.hint-fonts {\n  font-weight: bold; }\n"
 
 /***/ }),
 
@@ -12189,15 +12189,17 @@ module.exports = ".example-container {\n  display: flex;\n  flex-direction: colu
 /*!***************************************************************************!*\
   !*** ./src/app/shell/components/new-volunteer/new-volunteer.component.ts ***!
   \***************************************************************************/
-/*! exports provided: NewVolunteerComponent */
+/*! exports provided: MyErrorStateMatcher, NewVolunteerComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MyErrorStateMatcher", function() { return MyErrorStateMatcher; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewVolunteerComponent", function() { return NewVolunteerComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _core_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../core/data.service */ "./src/app/core/data.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -12210,23 +12212,54 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+/** Error when invalid control is dirty, touched, or submitted. */
+var MyErrorStateMatcher = /** @class */ (function () {
+    function MyErrorStateMatcher() {
+    }
+    MyErrorStateMatcher.prototype.isErrorState = function (control, form) {
+        var isSubmitted = form && form.submitted;
+        return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+    };
+    return MyErrorStateMatcher;
+}());
+
 var NewVolunteerComponent = /** @class */ (function () {
-    function NewVolunteerComponent(formBuilder, dataService) {
+    function NewVolunteerComponent(formBuilder, dataService, router) {
         this.formBuilder = formBuilder;
         this.dataService = dataService;
+        this.router = router;
+        this.matcher = new MyErrorStateMatcher();
         this.toppingList = [];
-        this.foods = [];
         this.buildFormGroup();
     }
     NewVolunteerComponent.prototype.ngOnInit = function () {
-        // this.toppings = new FormControl();
         this.getStates();
-        this.toppingList = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
-        this.foods = [
-            { value: 'steak-0', viewValue: 'Steak' },
-            { value: 'pizza-1', viewValue: 'Pizza' },
-            { value: 'tacos-2', viewValue: 'Tacos' }
-        ];
+        this.getQualifications();
+        this.getWorkAreas();
+        this.setMinDate();
+        this.currMode = 'add';
+        if (this.currMode === 'add') {
+            this.setPrefix();
+            this.setGender();
+        }
+    };
+    NewVolunteerComponent.prototype.setPrefix = function () {
+        this.prefixMr = 'false';
+        this.prefixMs = 'true';
+        this.prefixOther = 'false';
+    };
+    NewVolunteerComponent.prototype.setGender = function () {
+        this.male = 'false';
+        this.female = 'true';
+        this.other = 'false';
+    };
+    NewVolunteerComponent.prototype.setMinDate = function () {
+        var currDate = new Date();
+        var year = currDate.getFullYear() - 18;
+        var month = currDate.getMonth();
+        var day = currDate.getDay();
+        this.maxDate = new Date(year, month, day);
     };
     NewVolunteerComponent.prototype.buildFormGroup = function () {
         this.volunteerFormGroup = this.formBuilder.group({
@@ -12245,17 +12278,49 @@ var NewVolunteerComponent = /** @class */ (function () {
     NewVolunteerComponent.prototype.getStates = function () {
         var _this = this;
         this.dataService.getStates().subscribe(function (states) {
-            debugger;
             return _this.states = states;
         });
     };
-    NewVolunteerComponent.prototype.stateChange = function (stateId) {
+    NewVolunteerComponent.prototype.stateChange = function (state) {
+        var _this = this;
+        this.dataService.getCitiesForState(state.id)
+            .subscribe(function (cities) {
+            _this.cities = cities;
+        }, function (err) { return console.log(err); });
+    };
+    NewVolunteerComponent.prototype.getWorkAreas = function () {
+        var _this = this;
+        this.dataService.getWorkAreas().subscribe(function (workAreas) {
+            return _this.workAreas = workAreas;
+        });
+    };
+    NewVolunteerComponent.prototype.getQualifications = function () {
+        var _this = this;
+        this.dataService.getQualifications().subscribe(function (qualifications) {
+            return _this.qualifications = qualifications;
+        });
+    };
+    NewVolunteerComponent.prototype.pincodeKeyUp = function (event) {
+        debugger;
+        return (event.charCode >= 48 && event.charCode <= 57);
+    };
+    NewVolunteerComponent.prototype.submit = function () {
         var _this = this;
         debugger;
-        this.dataService.getCitiesForState(stateId)
-            .subscribe(function (cities) {
+        var volunteer;
+        volunteer = this.volunteerFormGroup.value;
+        volunteer.stateId = volunteer.state.id;
+        volunteer.cityId = volunteer.city.id;
+        volunteer.qualificationId = volunteer.qualification.id;
+        this.dataService.insertVolunteer(volunteer)
+            .subscribe(function (customer) {
             debugger;
-            _this.cities = cities;
+            if (customer) {
+                _this.router.navigate(['/customers']);
+            }
+            else {
+                //this.errorMessage = 'Unable to add customer';
+            }
         }, function (err) { return console.log(err); });
     };
     NewVolunteerComponent = __decorate([
@@ -12265,11 +12330,16 @@ var NewVolunteerComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./new-volunteer.component.scss */ "./src/app/shell/components/new-volunteer/new-volunteer.component.scss")]
         }),
         __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"],
-            _core_data_service__WEBPACK_IMPORTED_MODULE_2__["DataService"]])
+            _core_data_service__WEBPACK_IMPORTED_MODULE_2__["DataService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], NewVolunteerComponent);
     return NewVolunteerComponent;
 }());
 
+// export interface Food {
+//   value: string;
+//   viewValue: string;
+// }
 
 
 /***/ }),
@@ -12733,12 +12803,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! angular-bootstrap-md */ "./node_modules/angular-bootstrap-md/esm5/angular-bootstrap-md.es5.js");
 /* harmony import */ var _components_forgot_password_forgot_password_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/forgot-password/forgot-password.component */ "./src/app/shell/components/forgot-password/forgot-password.component.ts");
 /* harmony import */ var _components_organization_organization_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/organization/organization.component */ "./src/app/shell/components/organization/organization.component.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -12797,7 +12869,10 @@ var ShellModule = /** @class */ (function () {
                 _components_login_login_component__WEBPACK_IMPORTED_MODULE_14__["LoginComponent"],
                 _components_forgot_password_forgot_password_component__WEBPACK_IMPORTED_MODULE_16__["ForgotPasswordComponent"],
                 _components_organization_organization_component__WEBPACK_IMPORTED_MODULE_17__["OrganizationComponent"]
-            ]
+            ],
+            providers: [
+                { provide: _angular_material__WEBPACK_IMPORTED_MODULE_18__["MAT_DATE_LOCALE"], useValue: 'en-GB' },
+            ],
         })
     ], ShellModule);
     return ShellModule;

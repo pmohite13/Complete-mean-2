@@ -793,6 +793,9 @@ var DataService = /** @class */ (function () {
         this.baseProjectsUrl = '/api/projects';
         this.baseStatesUrl = '/api/states';
         this.baseCitiesUrl = '/api/cities';
+        this.baseWorkAreaUrl = '/api/workAreas';
+        this.baseQualificationUrl = '/api/qualifications';
+        this.baseVolunteerUrl = '/api/volunteers';
     }
     DataService.prototype.getCustomers = function () {
         var _this = this;
@@ -847,6 +850,13 @@ var DataService = /** @class */ (function () {
             return data.customer;
         }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
+    DataService.prototype.insertVolunteer = function (volunteer) {
+        return this.http.post(this.baseVolunteerUrl, volunteer)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (data) {
+            console.log('insertVolunteer status: ' + data.status);
+            return data.volunteer;
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
+    };
     DataService.prototype.updateCustomer = function (customer) {
         return this.http.put(this.baseUrl + '/' + customer._id, customer)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (data) {
@@ -858,6 +868,10 @@ var DataService = /** @class */ (function () {
         return this.http.delete(this.baseUrl + '/' + id)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
+    DataService.prototype.getWorkAreas = function () {
+        return this.http.get(this.baseWorkAreaUrl)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
+    };
     DataService.prototype.getStates = function () {
         return this.http.get(this.baseStatesUrl)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
@@ -867,7 +881,7 @@ var DataService = /** @class */ (function () {
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
     DataService.prototype.getQualifications = function () {
-        return this.http.get(this.baseStatesUrl)
+        return this.http.get(this.baseQualificationUrl)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
     DataService.prototype.calculateCustomersOrderTotal = function (customers) {
