@@ -31,6 +31,7 @@ export interface IVolunteer {
     pincode: number;
     address1: string;
     address2: string;
+    user: IUser
 }
 
 export interface IProject {
@@ -40,11 +41,12 @@ export interface IProject {
 }
 
 export interface IUser {
+    _id?: string;
     firstName?: string;
     lastName: string;
     email: string;
     phone: number;
-    password: string;
+    //password: string;
 }
 
 export interface IState {

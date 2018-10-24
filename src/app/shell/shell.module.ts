@@ -17,11 +17,13 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { OrganizationComponent } from './components/organization/organization.component';
 import { MAT_DATE_LOCALE } from '@angular/material';
+import { VolunteerProfileComponent } from './components/volunteer-profile/volunteer-profile.component';
 
 const routes: Routes = [
   {
     path: '', component: ShellComponent,
     children: [
+      { path: 'volunteerProfile', component: VolunteerProfileComponent },
       { path: 'forgotPassword', component: ForgotPasswordComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'login', component: LoginComponent },
@@ -53,7 +55,8 @@ const routes: Routes = [
     RegisterComponent,
     LoginComponent,
     ForgotPasswordComponent,
-    OrganizationComponent
+    OrganizationComponent,
+    VolunteerProfileComponent
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },

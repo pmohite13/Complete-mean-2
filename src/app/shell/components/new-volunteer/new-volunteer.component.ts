@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, FormGroupDirective, NgForm } from '@angular/forms';
 import { DataService } from '../../../core/data.service';
-import { IState, ICity, IWorkArea, IQualification, IVolunteer } from '../../../shared/interfaces';
+import { IState, ICity, IWorkArea, IQualification, IVolunteer, IUser } from '../../../shared/interfaces';
 import { debug } from 'util';
 import { ErrorStateMatcher } from '@angular/material';
 import { Router } from '@angular/router';
@@ -39,6 +39,7 @@ export class NewVolunteerComponent implements OnInit {
   other: string;
   workAreas: IWorkArea[];
   qualifications: IQualification[];
+  user: IUser;
 
   constructor(private formBuilder: FormBuilder,
     private dataService: DataService,
@@ -52,30 +53,21 @@ export class NewVolunteerComponent implements OnInit {
     this.getQualifications();
     this.getWorkAreas();
     this.setMinDate();
+    this.getUser();
 
-
-    this.currMode = 'add';
-
-    if (this.currMode === 'add') {
-      this.setPrefix();
-      this.setGender();
-    }
-
+    this.currMode = 'add';   
   }
-
-
-  private setPrefix() {
-    this.prefixMr = 'false';
-    this.prefixMs = 'true';
-    this.prefixOther = 'false';
+  
+  private getUser() {
+    debugger;
+    let token = localStorage.getItem('token');
+    this.dataService.getUser(token)
+      .subscribe((user: IUser) => {
+        debugger;
+        this.user = user;
+      },
+        (err) => console.log(err));
   }
-
-  private setGender() {
-    this.male = 'false';
-    this.female = 'true';
-    this.other = 'false';
-  }
-
   private setMinDate() {
     let currDate = new Date();
     let year = currDate.getFullYear() - 18;
@@ -86,10 +78,10 @@ export class NewVolunteerComponent implements OnInit {
 
   private buildFormGroup() {
     this.volunteerFormGroup = this.formBuilder.group({
-      prefix: ['', Validators.required],
+      prefix: ['2', Validators.required],
       dateOfBirth: ['', Validators.required],
-      gender: ['', Validators.required],
-      workArea: ['', Validators.required],
+      gender: ['2', Validators.required],
+      workAreas: ['', Validators.required],
       qualification: ['', Validators.required],
       address1: [''],
       address2: [''],
@@ -139,12 +131,13 @@ export class NewVolunteerComponent implements OnInit {
     volunteer.stateId = volunteer.state.id;
     volunteer.cityId = volunteer.city.id;
     volunteer.qualificationId = volunteer.qualification.id;
+    volunteer.user = this.user;
 
     this.dataService.insertVolunteer(volunteer)
-      .subscribe((customer: IVolunteer) => {
+      .subscribe((volunteer: IVolunteer) => {
         debugger;
-        if (customer) {
-          this.router.navigate(['/customers']);
+        if (volunteer) {
+          this.router.navigate(['/volunteerProfile']);
         }
         else {
           //this.errorMessage = 'Unable to add customer';

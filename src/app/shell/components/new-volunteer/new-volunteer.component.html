@@ -6,12 +6,21 @@
   </mat-card-header>
   <mat-card-content>
     <form class="example-container" [formGroup]="volunteerFormGroup">
-      <div style="margin-top:20px;">
+      <!-- <div style="margin-top:20px;">
         <label>Prefix*: </label>
         <mat-radio-group class="ml5" [formControl]="volunteerFormGroup.controls.prefix">
           <mat-radio-button value="1" [checked]="prefixMr === 'true'">Mr</mat-radio-button>
           <mat-radio-button value="2" [checked]="prefixMs === 'true'">Ms</mat-radio-button>
           <mat-radio-button value="3" [checked]="prefixOther === 'true'">Other</mat-radio-button>
+        </mat-radio-group>
+      </div> -->
+
+      <div style="margin-top:20px;">
+        <label>Prefix*: </label>
+        <mat-radio-group class="ml5" [formControl]="volunteerFormGroup.controls.prefix">
+          <mat-radio-button value="1">Mr</mat-radio-button>
+          <mat-radio-button value="2">Ms</mat-radio-button>
+          <mat-radio-button value="3">Other</mat-radio-button>
         </mat-radio-group>
       </div>
 
@@ -26,17 +35,26 @@
         </mat-error>
       </mat-form-field>
 
-      <div class="mt10">
+      <!-- <div class="mt10">
         <label>Gender*: </label>
         <mat-radio-group class="ml5" [formControl]="volunteerFormGroup.controls.gender">
           <mat-radio-button value="1" [checked]="male === 'true'">Male</mat-radio-button>
           <mat-radio-button value="2" [checked]="female === 'true'">Female</mat-radio-button>
           <mat-radio-button value="3" [checked]="other === 'true'">Other</mat-radio-button>
         </mat-radio-group>
+      </div> -->
+
+      <div class="mt10">
+        <label>Gender*: </label>
+        <mat-radio-group class="ml5" [formControl]="volunteerFormGroup.controls.gender">
+          <mat-radio-button value="1">Male</mat-radio-button>
+          <mat-radio-button value="2">Female</mat-radio-button>
+          <mat-radio-button value="3">Other</mat-radio-button>
+        </mat-radio-group>
       </div>
 
       <mat-form-field>
-        <mat-select placeholder="I am interested to volunteer in*" [formControl]="volunteerFormGroup.controls.workArea"
+        <mat-select placeholder="I am interested to volunteer in*" [formControl]="volunteerFormGroup.controls.workAreas"
           multiple>
           <mat-option *ngFor="let workArea of workAreas" [value]="workArea">{{workArea.name}}</mat-option>
         </mat-select>

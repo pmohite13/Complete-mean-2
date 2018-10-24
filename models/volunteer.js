@@ -3,6 +3,7 @@ const mongoose = require('mongoose'),
   State = require('./state'),
   City = require('./city'),
   WorkArea = require('./workArea'),
+  User = require('./user'),
   Qualification = require('./qualification');
 
 const VolunteerSchema = new Schema({
@@ -19,6 +20,7 @@ const VolunteerSchema = new Schema({
   stateId: { type: Number, required: true },
   city: City.schema,
   cityId: { type: Number, required: true },
+  user: User.schema
 });
 
 

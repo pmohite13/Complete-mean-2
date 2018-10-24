@@ -3,12 +3,12 @@ import { Injectable } from '@angular/core';
 //Using the new HttpClientModule now. If you're still on < Angular 4.3 see the 
 //data.service.ts file instead (simplify rename it to the name 
 //of this file to use it instead)
-import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
-import { ICustomer, IOrder, IState, IPagedResults, ICustomerResponse, IProject, ICity, IWorkArea, IQualification, IVolunteer, IVolunteerResponse } from '../shared/interfaces';
+import { ICustomer, IState, IPagedResults, ICustomerResponse, IProject, ICity, IWorkArea, IQualification, IVolunteer, IVolunteerResponse, IUser } from '../shared/interfaces';
 
 @Injectable()
 export class DataService {
@@ -20,6 +20,7 @@ export class DataService {
     baseWorkAreaUrl: string = '/api/workAreas';
     baseQualificationUrl: string = '/api/qualifications';
     baseVolunteerUrl: string = '/api/volunteers';
+    baseUserUrl: string = 'api/auth/user';
 
     constructor(private http: HttpClient) {
 
@@ -83,6 +84,23 @@ export class DataService {
 
     getCustomer(id: string): Observable<ICustomer> {
         return this.http.get<ICustomer>(this.baseUrl + '/' + id)
+            .pipe(
+                catchError(this.handleError)
+            );
+    }
+
+    getVolunteerByUser(user: IUser): Observable<IVolunteer> {
+        return this.http.get<IVolunteer>(this.baseVolunteerUrl + '/' + user)
+            .pipe(
+                catchError(this.handleError)
+            );
+    }
+
+    getUser(token: string): Observable<IUser> {
+        let headers: HttpHeaders = new HttpHeaders();
+        headers = headers.append('x-access-token', token);
+
+        return this.http.get<IUser>(this.baseUserUrl, { headers: headers })
             .pipe(
                 catchError(this.handleError)
             );
