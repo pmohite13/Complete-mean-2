@@ -11839,7 +11839,7 @@ var GridModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"!id\">\r\n  <mat-spinner></mat-spinner>\r\n</div>\r\n<div *ngIf=\"id\">\r\n  <mat-card>\r\n    <mat-card-header>\r\n      <mat-icon mat-card-avatar svgIcon=\"svg-1\"></mat-icon>\r\n      <mat-card-title>Shiba Inu</mat-card-title>\r\n      <mat-card-subtitle>Dog Breed</mat-card-subtitle>\r\n    </mat-card-header>\r\n    <mat-card-content>\r\n      <p>\r\n        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.\r\n        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally\r\n        bred for hunting.\r\n      </p>\r\n    </mat-card-content>\r\n  </mat-card>\r\n</div>"
+module.exports = "<div *ngIf=\"!id\">\n  <mat-spinner></mat-spinner>\n</div>\n<div *ngIf=\"id\">\n  <mat-card>\n    <mat-card-header>\n      <mat-icon mat-card-avatar svgIcon=\"svg-1\"></mat-icon>\n      <mat-card-title>Shiba Inu</mat-card-title>\n      <mat-card-subtitle>Dog Breed</mat-card-subtitle>\n    </mat-card-header>\n    <mat-card-content>\n      <p>\n        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.\n        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally\n        bred for hunting.\n      </p>\n    </mat-card-content>\n  </mat-card>\n</div>"
 
 /***/ }),
 
@@ -11909,7 +11909,7 @@ var ApplyToProjectComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  forgot-password works!\r\n</p>\r\n"
+module.exports = "<p>\n  forgot-password works!\n</p>\n"
 
 /***/ }),
 
@@ -11972,7 +11972,7 @@ var ForgotPasswordComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Material form login -->\r\n<mat-card>\r\n\r\n  <mat-card-header class=\"info-color white-text text-center py-4\">\r\n    <h5>\r\n      <strong>Sign in</strong>\r\n    </h5>\r\n  </mat-card-header>\r\n\r\n\r\n  <!--Card content-->\r\n  <mat-card-content class=\"px-lg-5 pt-0\">\r\n\r\n    <!-- Form -->\r\n    <form class=\"example-container\" [formGroup]=\"loginFormGroup\">\r\n\r\n      <!-- E-mail -->\r\n      <mat-form-field class=\"example-full-width\">\r\n        <input matInput placeholder=\"Email\" [formControl]=\"loginFormGroup.controls.email\" [errorStateMatcher]=\"matcher\">\r\n        <!-- <mat-hint>Errors appear instantly!</mat-hint> -->\r\n        <mat-error *ngIf=\"loginFormGroup.controls.email.hasError('email') && !loginFormGroup.controls.email.hasError('required')\">\r\n          Please enter a valid email address\r\n        </mat-error>\r\n        <mat-error *ngIf=\"loginFormGroup.controls.email.hasError('required')\">\r\n          Email is <strong>required</strong>\r\n        </mat-error>\r\n      </mat-form-field>\r\n\r\n      <!-- Password -->\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-11\">\r\n          <mat-form-field>\r\n\r\n            <input [type]=\"showPassword.checked ? 'text' : 'password'\" matInput placeholder=\"New password\"\r\n              [formControl]=\"loginFormGroup.controls.password\" [errorStateMatcher]=\"matcher\">\r\n            <mat-icon *ngIf=\"showPassword\" #visibilityIcon class=\"tb-icon\" (click)=\"togglePassword()\" matSuffix>\r\n              {{showPassword ? visibility : visibility_off}}\r\n            </mat-icon>\r\n            <!-- <mat-icon *ngIf=\"!showPassword\" #visibilityIconOff class=\"tb-icon\" (click)=\"togglePassword()\" matSuffix>visibility_off</mat-icon> -->\r\n            <mat-error *ngIf=\"loginFormGroup.controls.password.hasError('required', 'password')\">\r\n              Please enter your new password\r\n            </mat-error>\r\n          </mat-form-field>\r\n        </div>\r\n        <div class=\"col-lg-1\">\r\n          <mat-checkbox #showPassword>Show password</mat-checkbox>\r\n        </div>\r\n      </div>\r\n      <div style=\"margin-bottom:20px;\">\r\n        <div>\r\n          <!-- Remember me -->\r\n          <mat-checkbox>Remember me</mat-checkbox>\r\n        </div>\r\n        <div>\r\n          <!-- Forgot password -->\r\n          <a matLine [routerLink]=\"['/shell/forgotPassword']\">Forgot Password?</a>\r\n        </div>\r\n      </div>\r\n\r\n      <!-- Sign in button -->\r\n      <div class=\"text-center\" style=\"margin-bottom:20px;\">\r\n        <button mat-raised-button color=\"primary\" (click)=\"loginUser()\">Login</button>\r\n      </div>\r\n\r\n      <!-- Register -->\r\n      <p>Not a member?\r\n        <a matLine [routerLink]=\"['/shell/register']\">Register</a>\r\n      </p>\r\n\r\n      <!-- Social login -->\r\n      <p style=\"margin-top:10px;\">or sign in with:</p>\r\n      <div class=\"col-md-4\">\r\n        <a>\r\n          <i class=\"fa fa-facebook-official\" aria-hidden=\"true\"></i>\r\n        </a>\r\n        <a>\r\n          <i class=\"fa fa-google\" aria-hidden=\"true\"></i>\r\n        </a>\r\n      </div>\r\n\r\n    </form>\r\n    <!-- Form -->\r\n\r\n  </mat-card-content>\r\n\r\n</mat-card>\r\n<!-- Material form login -->"
+module.exports = "<!-- Material form login -->\n<mat-card>\n\n  <mat-card-header class=\"info-color white-text text-center py-4\">\n    <h5>\n      <strong>Sign in</strong>\n    </h5>\n  </mat-card-header>\n\n\n  <!--Card content-->\n  <mat-card-content class=\"px-lg-5 pt-0\">\n\n    <!-- Form -->\n    <form class=\"example-container\" [formGroup]=\"loginFormGroup\">\n\n      <!-- E-mail -->\n      <mat-form-field class=\"example-full-width\">\n        <input matInput placeholder=\"Email\" [formControl]=\"loginFormGroup.controls.email\" [errorStateMatcher]=\"matcher\">\n        <!-- <mat-hint>Errors appear instantly!</mat-hint> -->\n        <mat-error *ngIf=\"loginFormGroup.controls.email.hasError('email') && !loginFormGroup.controls.email.hasError('required')\">\n          Please enter a valid email address\n        </mat-error>\n        <mat-error *ngIf=\"loginFormGroup.controls.email.hasError('required')\">\n          Email is <strong>required</strong>\n        </mat-error>\n      </mat-form-field>\n\n      <!-- Password -->\n      <div class=\"row\">\n        <div class=\"col-lg-11\">\n          <mat-form-field>\n\n            <input [type]=\"showPassword.checked ? 'text' : 'password'\" matInput placeholder=\"New password\"\n              [formControl]=\"loginFormGroup.controls.password\" [errorStateMatcher]=\"matcher\">\n            <mat-icon *ngIf=\"showPassword\" #visibilityIcon class=\"tb-icon\" (click)=\"togglePassword()\" matSuffix>\n              {{showPassword ? visibility : visibility_off}}\n            </mat-icon>\n            <!-- <mat-icon *ngIf=\"!showPassword\" #visibilityIconOff class=\"tb-icon\" (click)=\"togglePassword()\" matSuffix>visibility_off</mat-icon> -->\n            <mat-error *ngIf=\"loginFormGroup.controls.password.hasError('required', 'password')\">\n              Please enter your new password\n            </mat-error>\n          </mat-form-field>\n        </div>\n        <div class=\"col-lg-1\">\n          <mat-checkbox #showPassword>Show password</mat-checkbox>\n        </div>\n      </div>\n      <div style=\"margin-bottom:20px;\">\n        <div>\n          <!-- Remember me -->\n          <mat-checkbox>Remember me</mat-checkbox>\n        </div>\n        <div>\n          <!-- Forgot password -->\n          <a matLine [routerLink]=\"['/shell/forgotPassword']\">Forgot Password?</a>\n        </div>\n      </div>\n\n      <!-- Sign in button -->\n      <div class=\"text-center\" style=\"margin-bottom:20px;\">\n        <button mat-raised-button color=\"primary\" (click)=\"loginUser()\">Login</button>\n      </div>\n\n      <!-- Register -->\n      <p>Not a member?\n        <a matLine [routerLink]=\"['/shell/register']\">Register</a>\n      </p>\n\n      <!-- Social login -->\n      <p style=\"margin-top:10px;\">or sign in with:</p>\n      <div class=\"col-md-4\">\n        <a>\n          <i class=\"fa fa-facebook-official\" aria-hidden=\"true\"></i>\n        </a>\n        <a>\n          <i class=\"fa fa-google\" aria-hidden=\"true\"></i>\n        </a>\n      </div>\n\n    </form>\n    <!-- Form -->\n\n  </mat-card-content>\n\n</mat-card>\n<!-- Material form login -->"
 
 /***/ }),
 
@@ -12002,6 +12002,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _core_register_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../core/register.service */ "./src/app/core/register.service.ts");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _core_data_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../core/data.service */ "./src/app/core/data.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -12016,11 +12017,13 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent(route, formBuilder, registerService, router) {
+    function LoginComponent(route, formBuilder, registerService, dataService, router) {
         this.route = route;
         this.formBuilder = formBuilder;
         this.registerService = registerService;
+        this.dataService = dataService;
         this.router = router;
         this.showPassword = true;
         this.buildFormGroup();
@@ -12052,9 +12055,20 @@ var LoginComponent = /** @class */ (function () {
             if (authResponse.auth) {
                 localStorage.setItem('token', authResponse.token);
                 if (_this.entityId === 1) { // its volunteer
-                    _this.router.navigate(['shell/newVolunteer']);
+                    var token = localStorage.getItem('token');
+                    _this.dataService.getVolunteerByUser(_this.user.email)
+                        .subscribe(function (volunteer) {
+                        debugger;
+                        _this.volunteer = volunteer[0];
+                        if (_this.volunteer) {
+                            _this.router.navigate(['shell/volunteerProfile']);
+                        }
+                        else {
+                            _this.router.navigate(['shell/newVolunteer', '0']);
+                        }
+                    }, function (err) { return console.log(err); });
                 }
-                if (_this.entityId === 2) { // its volunteer
+                if (_this.entityId === 2) { // its organization
                     _this.router.navigate(['shell/organization']);
                 }
             }
@@ -12080,6 +12094,7 @@ var LoginComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"],
             _core_register_service__WEBPACK_IMPORTED_MODULE_3__["RegisterService"],
+            _core_data_service__WEBPACK_IMPORTED_MODULE_5__["DataService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
     ], LoginComponent);
     return LoginComponent;
@@ -12096,7 +12111,7 @@ var LoginComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <mat-card>\r\n  <mat-card-header>\r\n    \r\n  </mat-card-header>\r\n  <mat-card-content>\r\n    <p>\r\n      <a matLine [routerLink]=\"['/shell/newVolunteer']\">\r\n        <mat-icon svgIcon=\"svg-1\"></mat-icon>Goto Volunteer\r\n      </a>\r\n    </p>\r\n  </mat-card-content>\r\n</mat-card> -->\r\n\r\n\r\n<mat-grid-list cols=\"4\" rowHeight=\"2:2\">\r\n  <mat-grid-tile class=\"my-class\" *ngFor=\"let tile of tiles\" [colspan]=\"tile.cols\" [rowspan]=\"tile.rows\"\r\n    [style.background]=\"tile.color\" (click)=\"onTileClicked(tile)\">\r\n    {{tile.text}}\r\n  </mat-grid-tile>\r\n</mat-grid-list>"
+module.exports = "<!-- <mat-card>\n  <mat-card-header>\n    \n  </mat-card-header>\n  <mat-card-content>\n    <p>\n      <a matLine [routerLink]=\"['/shell/newVolunteer']\">\n        <mat-icon svgIcon=\"svg-1\"></mat-icon>Goto Volunteer\n      </a>\n    </p>\n  </mat-card-content>\n</mat-card> -->\n\n\n<mat-grid-list cols=\"4\" rowHeight=\"2:2\">\n  <mat-grid-tile class=\"my-class\" *ngFor=\"let tile of tiles\" [colspan]=\"tile.cols\" [rowspan]=\"tile.rows\"\n    [style.background]=\"tile.color\" (click)=\"onTileClicked(tile)\">\n    {{tile.text}}\n  </mat-grid-tile>\n</mat-grid-list>"
 
 /***/ }),
 
@@ -12170,7 +12185,7 @@ var MainContentComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card>\r\n  <mat-card-header class=\"info-color white-text text-center py-4\">\r\n    <h5>\r\n      <strong>Volunteer (*Required)</strong>\r\n    </h5>\r\n  </mat-card-header>\r\n  <mat-card-content>\r\n    <form class=\"example-container\" [formGroup]=\"volunteerFormGroup\">\r\n      <!-- <div style=\"margin-top:20px;\">\r\n        <label>Prefix*: </label>\r\n        <mat-radio-group class=\"ml5\" [formControl]=\"volunteerFormGroup.controls.prefix\">\r\n          <mat-radio-button value=\"1\" [checked]=\"prefixMr === 'true'\">Mr</mat-radio-button>\r\n          <mat-radio-button value=\"2\" [checked]=\"prefixMs === 'true'\">Ms</mat-radio-button>\r\n          <mat-radio-button value=\"3\" [checked]=\"prefixOther === 'true'\">Other</mat-radio-button>\r\n        </mat-radio-group>\r\n      </div> -->\r\n\r\n      <div style=\"margin-top:20px;\">\r\n        <label>Prefix*: </label>\r\n        <mat-radio-group class=\"ml5\" [formControl]=\"volunteerFormGroup.controls.prefix\">\r\n          <mat-radio-button value=\"1\">Mr</mat-radio-button>\r\n          <mat-radio-button value=\"2\">Ms</mat-radio-button>\r\n          <mat-radio-button value=\"3\">Other</mat-radio-button>\r\n        </mat-radio-group>\r\n      </div>\r\n\r\n      <mat-form-field>\r\n        <input matInput [formControl]=\"volunteerFormGroup.controls.dateOfBirth\" [matDatepicker]=\"dateOfBirth\" [max]=\"maxDate\"\r\n          placeholder=\"Date of Birth*\" [errorStateMatcher]=\"matcher\">\r\n        <mat-hint class=\"hint-fonts\">Minimum Age is 18 years!</mat-hint>\r\n        <mat-datepicker-toggle matSuffix [for]=\"dateOfBirth\"></mat-datepicker-toggle>\r\n        <mat-datepicker #dateOfBirth></mat-datepicker>\r\n        <mat-error *ngIf=\"volunteerFormGroup.controls.dateOfBirth.hasError('required')\">\r\n          Date of Birth is <strong>required</strong>\r\n        </mat-error>\r\n      </mat-form-field>\r\n\r\n      <!-- <div class=\"mt10\">\r\n        <label>Gender*: </label>\r\n        <mat-radio-group class=\"ml5\" [formControl]=\"volunteerFormGroup.controls.gender\">\r\n          <mat-radio-button value=\"1\" [checked]=\"male === 'true'\">Male</mat-radio-button>\r\n          <mat-radio-button value=\"2\" [checked]=\"female === 'true'\">Female</mat-radio-button>\r\n          <mat-radio-button value=\"3\" [checked]=\"other === 'true'\">Other</mat-radio-button>\r\n        </mat-radio-group>\r\n      </div> -->\r\n\r\n      <div class=\"mt10\">\r\n        <label>Gender*: </label>\r\n        <mat-radio-group class=\"ml5\" [formControl]=\"volunteerFormGroup.controls.gender\">\r\n          <mat-radio-button value=\"1\">Male</mat-radio-button>\r\n          <mat-radio-button value=\"2\">Female</mat-radio-button>\r\n          <mat-radio-button value=\"3\">Other</mat-radio-button>\r\n        </mat-radio-group>\r\n      </div>\r\n\r\n      <mat-form-field>\r\n        <mat-select placeholder=\"I am interested to volunteer in*\" [formControl]=\"volunteerFormGroup.controls.workAreas\"\r\n          multiple>\r\n          <mat-option *ngFor=\"let workArea of workAreas\" [value]=\"workArea\">{{workArea.name}}</mat-option>\r\n        </mat-select>\r\n      </mat-form-field>\r\n\r\n      <mat-form-field>\r\n        <mat-select placeholder=\"Qualification*\" [formControl]=\"volunteerFormGroup.controls.qualification\">\r\n          <mat-option *ngFor=\"let qualification of qualifications\" [value]=\"qualification\">\r\n            {{qualification.name}}\r\n          </mat-option>\r\n        </mat-select>\r\n      </mat-form-field>\r\n\r\n      <mat-form-field>\r\n        <textarea matInput [formControl]=\"volunteerFormGroup.controls.address1\" placeholder=\"Address 1\"></textarea>\r\n      </mat-form-field>\r\n\r\n      <mat-form-field>\r\n        <textarea matInput [formControl]=\"volunteerFormGroup.controls.address2\" placeholder=\"Address 2\"></textarea>\r\n      </mat-form-field>\r\n\r\n      <mat-form-field>\r\n        <input matInput [formControl]=\"volunteerFormGroup.controls.pincode\" (onkeypress)=\"pincodeKeyUp($event)\"\r\n          placeholder=\"Pincode*\">\r\n      </mat-form-field>\r\n\r\n      <mat-form-field>\r\n        <mat-select [formControl]=\"volunteerFormGroup.controls.state\" placeholder=\"State*\" (selectionChange)=\"stateChange($event.value)\">\r\n          <mat-option *ngFor=\"let state of states\" [value]=\"state\">\r\n            {{state.name}}\r\n          </mat-option>\r\n        </mat-select>\r\n      </mat-form-field>\r\n\r\n      <mat-form-field>\r\n        <mat-select [formControl]=\"volunteerFormGroup.controls.city\" placeholder=\"City*\">\r\n          <mat-option *ngFor=\"let city of cities\" [value]=\"city\">\r\n            {{city.name}}\r\n          </mat-option>\r\n        </mat-select>\r\n      </mat-form-field>\r\n\r\n      <!-- Sign up button -->\r\n      <div class=\"text-center\">\r\n        <button mat-raised-button color=\"primary\" (click)=\"submit()\">Finish</button>\r\n      </div>\r\n    </form>\r\n  </mat-card-content>\r\n\r\n</mat-card>"
+module.exports = "<mat-card>\r\n  <mat-card-header class=\"info-color white-text text-center py-4\">\r\n    <h5>\r\n      <strong>Volunteer (*Required)</strong>\r\n    </h5>\r\n  </mat-card-header>\r\n  <mat-card-content>\r\n    <form class=\"example-container\" [formGroup]=\"volunteerFormGroup\">     \r\n\r\n      <div style=\"margin-top:20px;\">\r\n        <label>Prefix*: </label>\r\n        <mat-radio-group class=\"ml5\" [formControl]=\"volunteerFormGroup.controls.prefix\">\r\n          <mat-radio-button value=\"1\">Mr</mat-radio-button>\r\n          <mat-radio-button value=\"2\">Ms</mat-radio-button>\r\n          <mat-radio-button value=\"3\">Other</mat-radio-button>\r\n        </mat-radio-group>\r\n      </div>\r\n\r\n      <mat-form-field>\r\n        <input matInput [formControl]=\"volunteerFormGroup.controls.dateOfBirth\" [matDatepicker]=\"dateOfBirth\" [max]=\"maxDate\"\r\n          placeholder=\"Date of Birth*\" [errorStateMatcher]=\"matcher\">\r\n        <mat-hint class=\"hint-fonts\">Minimum Age is 18 years!</mat-hint>\r\n        <mat-datepicker-toggle matSuffix [for]=\"dateOfBirth\"></mat-datepicker-toggle>\r\n        <mat-datepicker #dateOfBirth></mat-datepicker>\r\n        <mat-error *ngIf=\"volunteerFormGroup.controls.dateOfBirth.hasError('required')\">\r\n          Date of Birth is <strong>required</strong>\r\n        </mat-error>\r\n      </mat-form-field>\r\n\r\n\r\n      <div class=\"mt10\">\r\n        <label>Gender*: </label>\r\n        <mat-radio-group class=\"ml5\" [formControl]=\"volunteerFormGroup.controls.gender\">\r\n          <mat-radio-button value=\"1\">Male</mat-radio-button>\r\n          <mat-radio-button value=\"2\">Female</mat-radio-button>\r\n          <mat-radio-button value=\"3\">Other</mat-radio-button>\r\n        </mat-radio-group>\r\n      </div>\r\n\r\n      <mat-form-field>\r\n        <mat-select placeholder=\"I am interested to volunteer in*\" [formControl]=\"volunteerFormGroup.controls.workAreas\"\r\n          multiple>\r\n          <mat-option *ngFor=\"let workArea of workAreas\" [value]=\"workArea\">{{workArea.name}}</mat-option>\r\n        </mat-select>\r\n      </mat-form-field>\r\n\r\n      <mat-form-field>\r\n        <mat-select placeholder=\"Qualification*\" [formControl]=\"volunteerFormGroup.controls.qualification\" (selectionChange)=\"qualificationChange($event)\">\r\n          <mat-option *ngFor=\"let qualification of qualifications\" [value]=\"qualification\">\r\n            {{qualification.name}}\r\n          </mat-option>\r\n        </mat-select>\r\n      </mat-form-field>\r\n\r\n      <mat-form-field>\r\n        <textarea matInput [formControl]=\"volunteerFormGroup.controls.address1\" placeholder=\"Address 1\"></textarea>\r\n      </mat-form-field>\r\n\r\n      <mat-form-field>\r\n        <textarea matInput [formControl]=\"volunteerFormGroup.controls.address2\" placeholder=\"Address 2\"></textarea>\r\n      </mat-form-field>\r\n\r\n      <mat-form-field>\r\n        <input matInput [formControl]=\"volunteerFormGroup.controls.pincode\" (onkeypress)=\"pincodeKeyUp($event)\"\r\n          placeholder=\"Pincode*\">\r\n      </mat-form-field>\r\n\r\n      <mat-form-field>\r\n        <mat-select [formControl]=\"volunteerFormGroup.controls.state\" placeholder=\"State*\" (selectionChange)=\"stateChange($event.value)\">\r\n          <mat-option *ngFor=\"let state of states\" [value]=\"state\">\r\n            {{state.name}}\r\n          </mat-option>\r\n        </mat-select>\r\n      </mat-form-field>\r\n\r\n      <mat-form-field>\r\n        <mat-select [formControl]=\"volunteerFormGroup.controls.city\" placeholder=\"City*\">\r\n          <mat-option *ngFor=\"let city of cities\" [value]=\"city\">\r\n            {{city.name}}\r\n          </mat-option>\r\n        </mat-select>\r\n      </mat-form-field>\r\n\r\n      <!-- Sign up button -->\r\n      <div class=\"text-center\">\r\n        <button mat-raised-button color=\"primary\" (click)=\"submit()\">Finish</button>\r\n      </div>\r\n    </form>\r\n  </mat-card-content>\r\n\r\n</mat-card>"
 
 /***/ }),
 
@@ -12225,37 +12240,72 @@ var MyErrorStateMatcher = /** @class */ (function () {
 }());
 
 var NewVolunteerComponent = /** @class */ (function () {
-    function NewVolunteerComponent(formBuilder, dataService, router) {
+    function NewVolunteerComponent(formBuilder, dataService, router, route) {
         this.formBuilder = formBuilder;
         this.dataService = dataService;
         this.router = router;
+        this.route = route;
         this.matcher = new MyErrorStateMatcher();
         this.toppingList = [];
         this.buildFormGroup();
     }
     NewVolunteerComponent.prototype.ngOnInit = function () {
+        debugger;
+        var id = this.route.snapshot.params['id'];
+        if (id !== '0') {
+            this.currMode = 'edit';
+            this.getUserAndVolunteer();
+        }
+        else {
+            this.getUser();
+        }
         this.getStates();
-        this.getQualifications();
+        // this.getQualifications();
         this.getWorkAreas();
         this.setMinDate();
-        this.getUser();
         this.currMode = 'add';
-        // if (this.currMode === 'add') {
-        //   this.setPrefix();
-        //   this.setGender();
-        // }
     };
-    // private setPrefix() {
-    //   this.prefixMr = 'false';
-    //   this.prefixMs = 'true';
-    //   this.prefixOther = 'false';
-    // }
-    // private setGender() {
-    //   this.male = 'false';
-    //   this.female = 'true';
-    //   this.other = 'false';
-    // }
     NewVolunteerComponent.prototype.getUser = function () {
+        var _this = this;
+        debugger;
+        var token = localStorage.getItem('token');
+        this.dataService.getUser(token)
+            .subscribe(function (user) {
+            debugger;
+            _this.user = user;
+        }, function (err) { return console.log(err); });
+    };
+    NewVolunteerComponent.prototype.getUserAndVolunteer = function () {
+        var _this = this;
+        debugger;
+        var token = localStorage.getItem('token');
+        this.dataService.getUser(token)
+            .subscribe(function (user) {
+            debugger;
+            _this.user = user;
+            _this.dataService.getVolunteerByUser(_this.user.email)
+                .subscribe(function (volunteer) {
+                debugger;
+                _this.volunteer = volunteer[0];
+                _this.getQualifications();
+                _this.volunteerFormGroup.patchValue({
+                    prefix: _this.volunteer.prefix,
+                    dateOfBirth: _this.volunteer.dateOfBirth,
+                    gender: _this.volunteer.gender,
+                    workAreas: _this.volunteer.workAreas,
+                    qualification: _this.volunteer.qualification,
+                    // qualification: { 'id': 4, 'name': "Masters" ,'_id':'5bd1bbd4bf3da88b50088661', '__v' : 0},
+                    address1: _this.volunteer.address1,
+                    address2: _this.volunteer.address2,
+                    pincode: _this.volunteer.pincode,
+                    state: _this.volunteer.state,
+                    city: _this.volunteer.city
+                });
+            }, function (err) { return console.log(err); });
+        }, function (err) { return console.log(err); });
+    };
+    NewVolunteerComponent.prototype.qualificationChange = function (qualification) {
+        debugger;
     };
     NewVolunteerComponent.prototype.setMinDate = function () {
         var currDate = new Date();
@@ -12315,11 +12365,12 @@ var NewVolunteerComponent = /** @class */ (function () {
         volunteer.stateId = volunteer.state.id;
         volunteer.cityId = volunteer.city.id;
         volunteer.qualificationId = volunteer.qualification.id;
+        volunteer.user = this.user;
         this.dataService.insertVolunteer(volunteer)
-            .subscribe(function (customer) {
+            .subscribe(function (volunteer) {
             debugger;
-            if (customer) {
-                _this.router.navigate(['/customers']);
+            if (volunteer) {
+                _this.router.navigate(['shell/volunteerProfile']);
             }
             else {
                 //this.errorMessage = 'Unable to add customer';
@@ -12334,15 +12385,12 @@ var NewVolunteerComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"],
             _core_data_service__WEBPACK_IMPORTED_MODULE_2__["DataService"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
+            _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]])
     ], NewVolunteerComponent);
     return NewVolunteerComponent;
 }());
 
-// export interface Food {
-//   value: string;
-//   viewValue: string;
-// }
 
 
 /***/ }),
@@ -12354,7 +12402,7 @@ var NewVolunteerComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\r\n  organization works!\r\n</p>\r\n"
+module.exports = "<p>\n  organization works!\n</p>\n"
 
 /***/ }),
 
@@ -12417,7 +12465,7 @@ var OrganizationComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Material form register -->\r\n<mat-card>\r\n\r\n  <mat-card-header class=\"info-color white-text text-center py-4\">\r\n    <h5>\r\n      <strong>Register</strong>\r\n    </h5>\r\n  </mat-card-header>\r\n\r\n  <!--Card content-->\r\n  <mat-card-content>\r\n\r\n    <!-- Form -->\r\n\r\n    <form class=\"example-container\" [formGroup]=\"registerFormGroup\">\r\n\r\n      <!-- First name -->\r\n      <mat-form-field>\r\n        <input matInput [formControl]=\"registerFormGroup.controls.firstName\" placeholder=\"First Name\"\r\n          [errorStateMatcher]=\"matcher\">\r\n        <mat-error *ngIf=\"registerFormGroup.controls.firstName.hasError('required')\">\r\n          First Name is <strong>required</strong>\r\n        </mat-error>\r\n      </mat-form-field>      \r\n\r\n      <!-- Last name -->\r\n      <mat-form-field>\r\n        <input matInput [formControl]=\"registerFormGroup.controls.lastName\" placeholder=\"Last Name\" [errorStateMatcher]=\"matcher\">\r\n        <mat-error *ngIf=\"registerFormGroup.controls.lastName.hasError('required')\">\r\n          Last Name is <strong>required</strong>\r\n        </mat-error>\r\n      </mat-form-field>     \r\n\r\n      <!-- E-mail -->\r\n      <mat-form-field class=\"example-full-width\">\r\n        <input matInput placeholder=\"Email\" [formControl]=\"registerFormGroup.controls.email\" [errorStateMatcher]=\"matcher\">\r\n        <!-- <mat-hint>Errors appear instantly!</mat-hint> -->\r\n        <mat-error *ngIf=\"registerFormGroup.controls.email.hasError('email') && !registerFormGroup.controls.email.hasError('required')\">\r\n          Please enter a valid email address\r\n        </mat-error>\r\n        <mat-error *ngIf=\"registerFormGroup.controls.email.hasError('required')\">\r\n          Email is <strong>required</strong>\r\n        </mat-error>\r\n      </mat-form-field>\r\n\r\n      <!-- Phone number -->\r\n      <mat-form-field>\r\n        <input matInput [formControl]=\"registerFormGroup.controls.phone\" placeholder=\"Phone\" [errorStateMatcher]=\"matcher\">\r\n        <mat-error *ngIf=\"registerFormGroup.controls.phone.hasError('required')\">\r\n          Phone is <strong>required</strong>\r\n        </mat-error>\r\n      </mat-form-field>\r\n\r\n\r\n      <!-- Password -->\r\n      <mat-form-field>\r\n        <input matInput placeholder=\"New password\" [formControl]=\"registerFormGroup.controls.password\"\r\n          [errorStateMatcher]=\"matcher\">\r\n        <mat-error *ngIf=\"registerFormGroup.controls.password.hasError('required', 'password')\">\r\n          Please enter your new password\r\n        </mat-error>\r\n      </mat-form-field>\r\n      \r\n      <!-- Confirm -->\r\n      <mat-form-field>\r\n        <input matInput placeholder=\"Confirm password\" [formControl]=\"registerFormGroup.controls.confirmPassword\"\r\n          [errorStateMatcher]=\"matcher\">\r\n        <mat-error *ngIf=\"registerFormGroup.controls.confirmPassword.hasError('required')\">\r\n          Please re-enter your password\r\n        </mat-error>\r\n        <mat-error *ngIf=\"registerFormGroup.hasError('notSame')\">\r\n          Passwords do not match\r\n        </mat-error>\r\n      </mat-form-field>\r\n\r\n\r\n\r\n      <!-- Newsletter -->\r\n      <!-- <mdb-checkbox>Subscribe to our newsletter</mdb-checkbox> -->\r\n\r\n      <!-- Sign up button -->\r\n      <div class=\"text-center\">\r\n        <button mat-raised-button color=\"primary\" (click)=\"registerUser()\">Register</button>\r\n        <button type=\"reset\" style=\"margin-left:10px;\" mat-raised-button color=\"warn\">Clear</button>\r\n      </div>\r\n\r\n      <!-- Social register -->\r\n      <p style=\"margin-top:10px;\">or sign up with:</p>\r\n      <div class=\"col-md-4\">\r\n        <a>\r\n          <i class=\"fa fa-facebook-official\" aria-hidden=\"true\"></i>\r\n        </a>\r\n        <a>\r\n          <i class=\"fa fa-google\" aria-hidden=\"true\"></i>\r\n        </a>\r\n      </div>\r\n\r\n      <hr>\r\n\r\n      <!-- Terms of service -->\r\n      <p>By clicking\r\n        <em>Sign up</em> you agree to our\r\n        <a href=\"\" target=\"_blank\">terms of service</a> and\r\n        <a href=\"\" target=\"_blank\">terms of service</a>. </p>\r\n\r\n    </form>\r\n\r\n    <!-- Form -->\r\n\r\n  </mat-card-content>\r\n\r\n</mat-card>\r\n<!-- Material form register -->"
+module.exports = "<!-- Material form register -->\n<mat-card>\n\n  <mat-card-header class=\"info-color white-text text-center py-4\">\n    <h5>\n      <strong>Register</strong>\n    </h5>\n  </mat-card-header>\n\n  <!--Card content-->\n  <mat-card-content>\n\n    <!-- Form -->\n\n    <form class=\"example-container\" [formGroup]=\"registerFormGroup\">\n\n      <!-- First name -->\n      <mat-form-field>\n        <input matInput [formControl]=\"registerFormGroup.controls.firstName\" placeholder=\"First Name\"\n          [errorStateMatcher]=\"matcher\">\n        <mat-error *ngIf=\"registerFormGroup.controls.firstName.hasError('required')\">\n          First Name is <strong>required</strong>\n        </mat-error>\n      </mat-form-field>      \n\n      <!-- Last name -->\n      <mat-form-field>\n        <input matInput [formControl]=\"registerFormGroup.controls.lastName\" placeholder=\"Last Name\" [errorStateMatcher]=\"matcher\">\n        <mat-error *ngIf=\"registerFormGroup.controls.lastName.hasError('required')\">\n          Last Name is <strong>required</strong>\n        </mat-error>\n      </mat-form-field>     \n\n      <!-- E-mail -->\n      <mat-form-field class=\"example-full-width\">\n        <input matInput placeholder=\"Email\" [formControl]=\"registerFormGroup.controls.email\" [errorStateMatcher]=\"matcher\">\n        <!-- <mat-hint>Errors appear instantly!</mat-hint> -->\n        <mat-error *ngIf=\"registerFormGroup.controls.email.hasError('email') && !registerFormGroup.controls.email.hasError('required')\">\n          Please enter a valid email address\n        </mat-error>\n        <mat-error *ngIf=\"registerFormGroup.controls.email.hasError('required')\">\n          Email is <strong>required</strong>\n        </mat-error>\n      </mat-form-field>\n\n      <!-- Phone number -->\n      <mat-form-field>\n        <input matInput [formControl]=\"registerFormGroup.controls.phone\" placeholder=\"Phone\" [errorStateMatcher]=\"matcher\">\n        <mat-error *ngIf=\"registerFormGroup.controls.phone.hasError('required')\">\n          Phone is <strong>required</strong>\n        </mat-error>\n      </mat-form-field>\n\n\n      <!-- Password -->\n      <mat-form-field>\n        <input matInput placeholder=\"New password\" [formControl]=\"registerFormGroup.controls.password\"\n          [errorStateMatcher]=\"matcher\">\n        <mat-error *ngIf=\"registerFormGroup.controls.password.hasError('required', 'password')\">\n          Please enter your new password\n        </mat-error>\n      </mat-form-field>\n      \n      <!-- Confirm -->\n      <mat-form-field>\n        <input matInput placeholder=\"Confirm password\" [formControl]=\"registerFormGroup.controls.confirmPassword\"\n          [errorStateMatcher]=\"matcher\">\n        <mat-error *ngIf=\"registerFormGroup.controls.confirmPassword.hasError('required')\">\n          Please re-enter your password\n        </mat-error>\n        <mat-error *ngIf=\"registerFormGroup.hasError('notSame')\">\n          Passwords do not match\n        </mat-error>\n      </mat-form-field>\n\n\n\n      <!-- Newsletter -->\n      <!-- <mdb-checkbox>Subscribe to our newsletter</mdb-checkbox> -->\n\n      <!-- Sign up button -->\n      <div class=\"text-center\">\n        <button mat-raised-button color=\"primary\" (click)=\"registerUser()\">Register</button>\n        <button type=\"reset\" style=\"margin-left:10px;\" mat-raised-button color=\"warn\">Clear</button>\n      </div>\n\n      <!-- Social register -->\n      <p style=\"margin-top:10px;\">or sign up with:</p>\n      <div class=\"col-md-4\">\n        <a>\n          <i class=\"fa fa-facebook-official\" aria-hidden=\"true\"></i>\n        </a>\n        <a>\n          <i class=\"fa fa-google\" aria-hidden=\"true\"></i>\n        </a>\n      </div>\n\n      <hr>\n\n      <!-- Terms of service -->\n      <p>By clicking\n        <em>Sign up</em> you agree to our\n        <a href=\"\" target=\"_blank\">terms of service</a> and\n        <a href=\"\" target=\"_blank\">terms of service</a>. </p>\n\n    </form>\n\n    <!-- Form -->\n\n  </mat-card-content>\n\n</mat-card>\n<!-- Material form register -->"
 
 /***/ }),
 
@@ -12544,7 +12592,7 @@ var RegisterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-sidenav-container class=\"app-sidenav-container\" autosize>\r\n    <mat-sidenav #sidenav class=\"app-sidenav mat-elevation-z10\" [opened]=\"!isScreenSmall()\" [mode]=\"isScreenSmall() ? 'over' : 'side'\">\r\n        <mat-toolbar color=\"primary\">Projects</mat-toolbar>\r\n        <mat-nav-list>\r\n            <mat-list-item *ngFor=\"let project of projects\">            \r\n                <a matLine [routerLink]=\"['/shell/applyToProject', project._id]\">\r\n                    <mat-icon svgIcon=\"svg-1\"></mat-icon>{{ project.projectName }}\r\n                </a>\r\n            </mat-list-item>\r\n        </mat-nav-list>\r\n    </mat-sidenav>\r\n\r\n    <div class=\"app-sidenav-content\">\r\n        <app-toolbar (toggleSidenav)=\"sidenav.toggle()\"></app-toolbar>\r\n\r\n        <div class=\"wrapper\">\r\n            <router-outlet></router-outlet>\r\n        </div>\r\n    </div>\r\n\r\n</mat-sidenav-container>"
+module.exports = "<mat-sidenav-container class=\"app-sidenav-container\" autosize>\n    <mat-sidenav #sidenav class=\"app-sidenav mat-elevation-z10\" [opened]=\"!isScreenSmall()\" [mode]=\"isScreenSmall() ? 'over' : 'side'\">\n        <mat-toolbar color=\"primary\">Projects</mat-toolbar>\n        <mat-nav-list>\n            <mat-list-item *ngFor=\"let project of projects\">            \n                <a matLine [routerLink]=\"['/shell/applyToProject', project._id]\">\n                    <mat-icon svgIcon=\"svg-1\"></mat-icon>{{ project.projectName }}\n                </a>\n            </mat-list-item>\n        </mat-nav-list>\n    </mat-sidenav>\n\n    <div class=\"app-sidenav-content\">\n        <app-toolbar (toggleSidenav)=\"sidenav.toggle()\"></app-toolbar>\n\n        <div class=\"wrapper\">\n            <router-outlet></router-outlet>\n        </div>\n    </div>\n\n</mat-sidenav-container>"
 
 /***/ }),
 
@@ -12648,7 +12696,7 @@ var SidenavComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar color=\"primary\">\r\n    <button mat-button class=\"side-nav-toggle\" (click)=\"toggleSidenav.emit()\">\r\n        <mat-icon>menu</mat-icon>\r\n    </button>\r\n\r\n    <span>Contacts Manager</span>\r\n</mat-toolbar>"
+module.exports = "<mat-toolbar color=\"primary\">\n    <button mat-button class=\"side-nav-toggle\" (click)=\"toggleSidenav.emit()\">\n        <mat-icon>menu</mat-icon>\n    </button>\n\n    <span>Contacts Manager</span>\n</mat-toolbar>"
 
 /***/ }),
 
@@ -12709,6 +12757,123 @@ var ToolbarComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/shell/components/volunteer-profile/volunteer-profile.component.html":
+/*!*************************************************************************************!*\
+  !*** ./src/app/shell/components/volunteer-profile/volunteer-profile.component.html ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\">\r\n  <div class=\"col-md-3\">\r\n    <mat-card>\r\n      <div class=\"row\">\r\n        <div class=\"col-md-12 text-center\">\r\n          <img src=\"../../../../assets/images/male.png\" class=\"img-avatar\">\r\n        </div>\r\n      </div>\r\n      <div class=\"row\" *ngIf=\"volunteer\">\r\n        <div class=\"col-md-12 text-center\">\r\n          <p></p>\r\n          <h3><strong>{{volunteer.user.firstName}} {{volunteer.user.lastName}}</strong></h3>\r\n          <h5>{{volunteer.qualification.name}}</h5>\r\n        </div>\r\n      </div>\r\n      <div class=\"row mb10 normalized\">\r\n        <div class=\"col-md-12\">\r\n          <hr>\r\n          <div class=\"row\">\r\n            <div class=\"col-md-6 text-left\">\r\n              <h4 class=\"list-title\">Followers</h4>\r\n            </div>\r\n            <div class=\"col-md-6 text-right\">\r\n              1,322\r\n            </div>\r\n          </div>\r\n          <hr>\r\n          <div class=\"row\">\r\n            <div class=\"col-md-6 text-left\">\r\n              <h4 class=\"list-title\">Friends</h4>\r\n            </div>\r\n            <div class=\"col-md-6 text-right\">\r\n              1,322\r\n            </div>\r\n          </div>\r\n          <hr>\r\n        </div>\r\n      </div>\r\n      <div class=\"row\" *ngIf=\"volunteer\">\r\n        <div class=\"col-md-12\">\r\n          <button mat-raised-button color=\"primary\" [routerLink]=\"['/shell/newVolunteer', volunteer._id]\">Edit</button>\r\n        </div>\r\n      </div>\r\n    </mat-card>\r\n    <mat-card class=\"mt20\">\r\n      <h3>About Me</h3>\r\n      <hr>\r\n      <div class=\"row\" *ngIf=\"volunteer\">\r\n        <span class=\"normalized\">\r\n          <mat-icon class=\"mr5\">book</mat-icon> <span class=\"list-title\" style=\"margin-left:-3px;\">Education</span>\r\n          <p class=\"mr5\">{{volunteer.qualification.name}}</p>\r\n        </span>\r\n      </div>\r\n      <hr>\r\n      <div class=\"row\" *ngIf=\"volunteer\">\r\n        <span class=\"normalized\">\r\n          <mat-icon class=\"mr5\">location_on</mat-icon> <span class=\"list-title\" style=\"margin-left:-3px;\">Location</span>\r\n          <p class=\"mr5\">{{volunteer.city.name}}, {{volunteer.state.name}}</p>\r\n        </span>\r\n      </div>\r\n      <hr>\r\n      <div class=\"row\">\r\n        <span class=\"normalized\">\r\n          <mat-icon class=\"mr5\">create</mat-icon> <span class=\"list-title\" style=\"margin-left:-3px;\">Domains</span>\r\n          <div class=\"ml10\">\r\n            <mat-chip-list *ngIf=\"volunteer\">\r\n              <mat-chip *ngFor=\"let domain of volunteer.workAreas; let i = index\" style=\"font-size: 10px\" color=\"accent\">{{domain.name}}</mat-chip>\r\n            </mat-chip-list>\r\n          </div>\r\n        </span>\r\n      </div>\r\n      <hr>\r\n    </mat-card>\r\n\r\n  </div>\r\n  <div class=\"col-md-9\">\r\n    <mat-card>\r\n      <mat-tab-group>\r\n        <mat-tab label=\"Applications\">\r\n          <table mat-table [dataSource]=\"dataSource\" matSort class=\"mat-elevation-z8\">\r\n\r\n            <!--- Note that these columns can be defined in any order.\r\n                      The actual rendered columns are set as a property on the row definition\" -->\r\n\r\n            <!-- Position Column -->\r\n            <ng-container matColumnDef=\"position\">\r\n              <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>\r\n              <td mat-cell *matCellDef=\"let element\"> {{element.position}} </td>\r\n            </ng-container>\r\n\r\n            <!-- Name Column -->\r\n            <ng-container matColumnDef=\"name\">\r\n              <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>\r\n              <td mat-cell *matCellDef=\"let element\"> {{element.name}} </td>\r\n            </ng-container>\r\n\r\n            <!-- Weight Column -->\r\n            <ng-container matColumnDef=\"weight\">\r\n              <th mat-header-cell *matHeaderCellDef mat-sort-header> Weight </th>\r\n              <td mat-cell *matCellDef=\"let element\"> {{element.weight}} </td>\r\n            </ng-container>\r\n\r\n            <!-- Symbol Column -->\r\n            <ng-container matColumnDef=\"symbol\">\r\n              <th mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </th>\r\n              <td mat-cell *matCellDef=\"let element\"> {{element.symbol}} </td>\r\n            </ng-container>\r\n\r\n            <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n            <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\r\n          </table>\r\n          <mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons></mat-paginator>\r\n        </mat-tab>\r\n      </mat-tab-group>\r\n\r\n    </mat-card>\r\n  </div>\r\n</div>\r\n\r\n\r\n\r\n<div class=\"row mt20\">\r\n  <div class=\"col-md-3\">\r\n\r\n  </div>\r\n\r\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/shell/components/volunteer-profile/volunteer-profile.component.scss":
+/*!*************************************************************************************!*\
+  !*** ./src/app/shell/components/volunteer-profile/volunteer-profile.component.scss ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".img-avatar {\n  border-radius: 50%;\n  width: 100px;\n  height: 100px;\n  border: 2px solid;\n  padding: 3px;\n  margin-left: auto;\n  margin-right: auto; }\n\n.mat-raised-button {\n  width: 100%; }\n\n.mat-card {\n  border-top: 3px solid #3f51b5; }\n\n.normalized {\n  font-size: 14px; }\n\n.mr5 {\n  vertical-align: bottom;\n  margin-left: 12px; }\n\n.list-title {\n  font-weight: bold; }\n\ntable {\n  width: 100%; }\n"
+
+/***/ }),
+
+/***/ "./src/app/shell/components/volunteer-profile/volunteer-profile.component.ts":
+/*!***********************************************************************************!*\
+  !*** ./src/app/shell/components/volunteer-profile/volunteer-profile.component.ts ***!
+  \***********************************************************************************/
+/*! exports provided: VolunteerProfileComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VolunteerProfileComponent", function() { return VolunteerProfileComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _core_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../core/data.service */ "./src/app/core/data.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var ELEMENT_DATA = [
+    { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
+    { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
+    { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
+    { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
+    { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
+    { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
+    { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
+    { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
+    { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
+    { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
+];
+var VolunteerProfileComponent = /** @class */ (function () {
+    function VolunteerProfileComponent(formBuilder, dataService, router) {
+        this.formBuilder = formBuilder;
+        this.dataService = dataService;
+        this.router = router;
+        this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatTableDataSource"](ELEMENT_DATA);
+        this.displayedColumns = ['position', 'name', 'weight', 'symbol'];
+    }
+    VolunteerProfileComponent.prototype.ngOnInit = function () {
+        this.getUser();
+        // this.getVolunteer();   
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+    };
+    VolunteerProfileComponent.prototype.getUser = function () {
+        var _this = this;
+        debugger;
+        var token = localStorage.getItem('token');
+        this.dataService.getUser(token)
+            .subscribe(function (user) {
+            debugger;
+            _this.user = user;
+            _this.dataService.getVolunteerByUser(_this.user.email)
+                .subscribe(function (volunteer) {
+                debugger;
+                _this.volunteer = volunteer[0];
+            }, function (err) { return console.log(err); });
+        }, function (err) { return console.log(err); });
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_4__["MatPaginator"]),
+        __metadata("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatPaginator"])
+    ], VolunteerProfileComponent.prototype, "paginator", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_4__["MatSort"]),
+        __metadata("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatSort"])
+    ], VolunteerProfileComponent.prototype, "sort", void 0);
+    VolunteerProfileComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-volunteer-profile',
+            template: __webpack_require__(/*! ./volunteer-profile.component.html */ "./src/app/shell/components/volunteer-profile/volunteer-profile.component.html"),
+            styles: [__webpack_require__(/*! ./volunteer-profile.component.scss */ "./src/app/shell/components/volunteer-profile/volunteer-profile.component.scss")]
+        }),
+        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"],
+            _core_data_service__WEBPACK_IMPORTED_MODULE_2__["DataService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
+    ], VolunteerProfileComponent);
+    return VolunteerProfileComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/shell/shell.component.css":
 /*!*******************************************!*\
   !*** ./src/app/shell/shell.component.css ***!
@@ -12727,7 +12892,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-sidenav></app-sidenav>\r\n"
+module.exports = "<app-sidenav></app-sidenav>\n"
 
 /***/ }),
 
@@ -12807,6 +12972,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_forgot_password_forgot_password_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/forgot-password/forgot-password.component */ "./src/app/shell/components/forgot-password/forgot-password.component.ts");
 /* harmony import */ var _components_organization_organization_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/organization/organization.component */ "./src/app/shell/components/organization/organization.component.ts");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _components_volunteer_profile_volunteer_profile_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/volunteer-profile/volunteer-profile.component */ "./src/app/shell/components/volunteer-profile/volunteer-profile.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -12832,14 +12998,16 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var routes = [
     {
         path: '', component: _shell_component__WEBPACK_IMPORTED_MODULE_5__["ShellComponent"],
         children: [
+            { path: 'volunteerProfile', component: _components_volunteer_profile_volunteer_profile_component__WEBPACK_IMPORTED_MODULE_19__["VolunteerProfileComponent"], canActivate: [_core_auth_guard_service__WEBPACK_IMPORTED_MODULE_12__["AuthGuardService"]] },
             { path: 'forgotPassword', component: _components_forgot_password_forgot_password_component__WEBPACK_IMPORTED_MODULE_16__["ForgotPasswordComponent"] },
             { path: 'register', component: _components_register_register_component__WEBPACK_IMPORTED_MODULE_13__["RegisterComponent"] },
             { path: 'login', component: _components_login_login_component__WEBPACK_IMPORTED_MODULE_14__["LoginComponent"] },
-            { path: 'newVolunteer', component: _components_new_volunteer_new_volunteer_component__WEBPACK_IMPORTED_MODULE_11__["NewVolunteerComponent"], canActivate: [_core_auth_guard_service__WEBPACK_IMPORTED_MODULE_12__["AuthGuardService"]] },
+            { path: 'newVolunteer/:id', component: _components_new_volunteer_new_volunteer_component__WEBPACK_IMPORTED_MODULE_11__["NewVolunteerComponent"], canActivate: [_core_auth_guard_service__WEBPACK_IMPORTED_MODULE_12__["AuthGuardService"]] },
             { path: 'organization', component: _components_organization_organization_component__WEBPACK_IMPORTED_MODULE_17__["OrganizationComponent"], canActivate: [_core_auth_guard_service__WEBPACK_IMPORTED_MODULE_12__["AuthGuardService"]] },
             { path: 'applyToProject/:id', component: _components_apply_to_project_apply_to_project_component__WEBPACK_IMPORTED_MODULE_10__["ApplyToProjectComponent"] },
             { path: ':id', component: _components_main_content_main_content_component__WEBPACK_IMPORTED_MODULE_4__["MainContentComponent"] },
@@ -12871,7 +13039,8 @@ var ShellModule = /** @class */ (function () {
                 _components_register_register_component__WEBPACK_IMPORTED_MODULE_13__["RegisterComponent"],
                 _components_login_login_component__WEBPACK_IMPORTED_MODULE_14__["LoginComponent"],
                 _components_forgot_password_forgot_password_component__WEBPACK_IMPORTED_MODULE_16__["ForgotPasswordComponent"],
-                _components_organization_organization_component__WEBPACK_IMPORTED_MODULE_17__["OrganizationComponent"]
+                _components_organization_organization_component__WEBPACK_IMPORTED_MODULE_17__["OrganizationComponent"],
+                _components_volunteer_profile_volunteer_profile_component__WEBPACK_IMPORTED_MODULE_19__["VolunteerProfileComponent"]
             ],
             providers: [
                 { provide: _angular_material__WEBPACK_IMPORTED_MODULE_18__["MAT_DATE_LOCALE"], useValue: 'en-GB' },

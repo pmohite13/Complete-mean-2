@@ -1,3 +1,127 @@
-<p>
-  volunteer-profile works!
-</p>
+<div class="row">
+  <div class="col-md-3">
+    <mat-card>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <img src="../../../../assets/images/male.png" class="img-avatar">
+        </div>
+      </div>
+      <div class="row" *ngIf="volunteer">
+        <div class="col-md-12 text-center">
+          <p></p>
+          <h3><strong>{{volunteer.user.firstName}} {{volunteer.user.lastName}}</strong></h3>
+          <h5>{{volunteer.qualification.name}}</h5>
+        </div>
+      </div>
+      <div class="row mb10 normalized">
+        <div class="col-md-12">
+          <hr>
+          <div class="row">
+            <div class="col-md-6 text-left">
+              <h4 class="list-title">Followers</h4>
+            </div>
+            <div class="col-md-6 text-right">
+              1,322
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-6 text-left">
+              <h4 class="list-title">Friends</h4>
+            </div>
+            <div class="col-md-6 text-right">
+              1,322
+            </div>
+          </div>
+          <hr>
+        </div>
+      </div>
+      <div class="row" *ngIf="volunteer">
+        <div class="col-md-12">
+          <button mat-raised-button color="primary" [routerLink]="['/shell/newVolunteer', volunteer._id]">Edit</button>
+        </div>
+      </div>
+    </mat-card>
+    <mat-card class="mt20">
+      <h3>About Me</h3>
+      <hr>
+      <div class="row" *ngIf="volunteer">
+        <span class="normalized">
+          <mat-icon class="mr5">book</mat-icon> <span class="list-title" style="margin-left:-3px;">Education</span>
+          <p class="mr5">{{volunteer.qualification.name}}</p>
+        </span>
+      </div>
+      <hr>
+      <div class="row" *ngIf="volunteer">
+        <span class="normalized">
+          <mat-icon class="mr5">location_on</mat-icon> <span class="list-title" style="margin-left:-3px;">Location</span>
+          <p class="mr5">{{volunteer.city.name}}, {{volunteer.state.name}}</p>
+        </span>
+      </div>
+      <hr>
+      <div class="row">
+        <span class="normalized">
+          <mat-icon class="mr5">create</mat-icon> <span class="list-title" style="margin-left:-3px;">Domains</span>
+          <div class="ml10">
+            <mat-chip-list *ngIf="volunteer">
+              <mat-chip *ngFor="let domain of volunteer.workAreas; let i = index" style="font-size: 10px" color="accent">{{domain.name}}</mat-chip>
+            </mat-chip-list>
+          </div>
+        </span>
+      </div>
+      <hr>
+    </mat-card>
+
+  </div>
+  <div class="col-md-9">
+    <mat-card>
+      <mat-tab-group>
+        <mat-tab label="Applications">
+          <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+            <!--- Note that these columns can be defined in any order.
+                      The actual rendered columns are set as a property on the row definition" -->
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+              <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="weight">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Weight </th>
+              <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="symbol">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </th>
+              <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        </mat-tab>
+      </mat-tab-group>
+
+    </mat-card>
+  </div>
+</div>
+
+
+
+<div class="row mt20">
+  <div class="col-md-3">
+
+  </div>
+
+</div>

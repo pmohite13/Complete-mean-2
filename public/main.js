@@ -796,6 +796,7 @@ var DataService = /** @class */ (function () {
         this.baseWorkAreaUrl = '/api/workAreas';
         this.baseQualificationUrl = '/api/qualifications';
         this.baseVolunteerUrl = '/api/volunteers';
+        this.baseUserUrl = 'api/auth/user';
     }
     DataService.prototype.getCustomers = function () {
         var _this = this;
@@ -841,6 +842,17 @@ var DataService = /** @class */ (function () {
     };
     DataService.prototype.getCustomer = function (id) {
         return this.http.get(this.baseUrl + '/' + id)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
+    };
+    DataService.prototype.getVolunteerByUser = function (user) {
+        debugger;
+        return this.http.get(this.baseVolunteerUrl + '/' + user)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
+    };
+    DataService.prototype.getUser = function (token) {
+        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]();
+        headers = headers.append('x-access-token', token);
+        return this.http.get(this.baseUserUrl, { headers: headers })
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
     DataService.prototype.insertCustomer = function (customer) {
@@ -1551,7 +1563,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<button mat-button>\r\n  <mat-icon>face</mat-icon>\r\n  Click me!\r\n</button>\r\n<mat-checkbox>Check me!</mat-checkbox>\r\n\r\n<mat-horizontal-stepper>\r\n  <mat-step label=\"step1\">step1</mat-step>\r\n  <mat-step label=\"step2\">step2</mat-step>\r\n</mat-horizontal-stepper>"
+module.exports = "<button mat-button>\n  <mat-icon>face</mat-icon>\n  Click me!\n</button>\n<mat-checkbox>Check me!</mat-checkbox>\n\n<mat-horizontal-stepper>\n  <mat-step label=\"step1\">step1</mat-step>\n  <mat-step label=\"step2\">step2</mat-step>\n</mat-horizontal-stepper>"
 
 /***/ }),
 
@@ -2172,7 +2184,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\practice\Complete-mean-2\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\USER\AngularCLI-NodeJS-MongoDB-CustomersService\src\main.ts */"./src/main.ts");
 
 
 /***/ })

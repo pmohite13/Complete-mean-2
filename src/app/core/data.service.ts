@@ -89,7 +89,8 @@ export class DataService {
             );
     }
 
-    getVolunteerByUser(user: IUser): Observable<IVolunteer> {
+    getVolunteerByUser(user: string): Observable<IVolunteer> {
+        debugger;
         return this.http.get<IVolunteer>(this.baseVolunteerUrl + '/' + user)
             .pipe(
                 catchError(this.handleError)

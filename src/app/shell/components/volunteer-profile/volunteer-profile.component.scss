@@ -1,0 +1,34 @@
+@import "../../../../assets/styles/variables.scss";
+
+.img-avatar {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  border: 2px solid;
+  padding: 3px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mat-raised-button {
+  width: 100%;
+}
+.mat-card {
+  border-top: 3px solid $primary;
+}
+
+.normalized {
+  font-size: 14px;
+}
+
+.mr5 {
+  vertical-align: bottom;
+  margin-left: 12px;
+}
+
+.list-title {
+  font-weight: bold;
+}
+table {
+  width: 100%;
+}

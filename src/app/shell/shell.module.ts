@@ -23,11 +23,11 @@ const routes: Routes = [
   {
     path: '', component: ShellComponent,
     children: [
-      { path: 'volunteerProfile', component: VolunteerProfileComponent },
+      { path: 'volunteerProfile', component: VolunteerProfileComponent,  canActivate: [AuthGuardService] },
       { path: 'forgotPassword', component: ForgotPasswordComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'newVolunteer', component: NewVolunteerComponent, canActivate: [AuthGuardService] },
+      { path: 'newVolunteer/:id', component: NewVolunteerComponent, canActivate: [AuthGuardService] },
       { path: 'organization', component: OrganizationComponent, canActivate: [AuthGuardService] },
       { path: 'applyToProject/:id', component: ApplyToProjectComponent },
       { path: ':id', component: MainContentComponent },

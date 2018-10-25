@@ -5,7 +5,7 @@ const volunteersRepo = require('../../../lib/volunteersRepository'),
 class CustomersController {
 
     constructor(router) {
-        router.get('/:id', this.getVolunteer.bind(this));
+       // router.get('/:id', this.getVolunteer.bind(this));
         router.get('/:user', this.getVolunteerByUser.bind(this));
         router.post('/', this.insertVolunteer.bind(this));
         // router.put('/:id', this.updateCustomer.bind(this));
@@ -31,7 +31,7 @@ class CustomersController {
     }
 
     getVolunteerByUser(req, res) {
-        console.log('*** getVolunteer');
+        console.log('*** getVolunteerByUser');
         const user = req.params.user;
         console.log(user);
 
