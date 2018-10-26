@@ -72,12 +72,18 @@ class AuthorizationController {
         User.findOne({ email: req.body.email }, function (err, user) {
             // if (err) return res.status(500).send('Error on the server');
             // if (!user) return res.status(404).send('No user found');
+
             if (err) return res.status(500).send({ auth: false, token: null, error: 'Error on the server' });
+
             if (!user) return res.status(404).send({ auth: false, token: null, error: 'No user found' });
             var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
+
             if (!passwordIsValid) res.status(401).send({ auth: false, token: null, error: res.statusText });
-            var token = jwt.sign({ id: user._id }, config.secret, { expiresIn: 86400 });
-            res.status(200).send({ auth: true, token: token });
+            if (passwordIsValid) {
+                var token = jwt.sign({ id: user._id }, config.secret, { expiresIn: 86400 });
+                res.status(200).send({ auth: true, token: token });
+            }
+
         });
     }
 

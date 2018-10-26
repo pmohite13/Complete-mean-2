@@ -5,6 +5,7 @@ import { IUser } from '../../../shared/interfaces';
 import { DataService } from '../../../core/data.service';
 import { Router } from '@angular/router';
 import { RegisterService } from '../../../core/register.service';
+import { ValidationService } from '../../../shared/validation.service';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 // export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -45,15 +46,30 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
+  // private buildFormGroup() {
+  //   this.registerFormGroup = this.formBuilder.group({
+  //     firstName: ['', Validators.required],
+  //     lastName: ['', Validators.required],
+  //     email: ['', [Validators.required, ValidationService.emailValidator]],
+  //     phone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), ValidationService.phoneNumberValidator]],
+  //     password: ['', Validators.required],
+  //     confirmPassword: ['', Validators.required]
+  //   }, { validator: this.checkPasswords });
+  // }
+
   private buildFormGroup() {
+    debugger;
     this.registerFormGroup = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.required],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required]
-    }, { validator: this.checkPasswords });
+      email: ['', [Validators.required, ValidationService.emailValidator]],
+      phone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), ValidationService.phoneNumberValidator]],
+      passwords: this.formBuilder.group({
+        password: ['', Validators.required],
+        confirmPassword: ['', Validators.required]
+      }, { validator: this.checkPasswords })
+    }
+    );
   }
 
   checkPasswords(group: FormGroup) { // here we have the 'passwords' group

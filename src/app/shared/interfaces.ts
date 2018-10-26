@@ -31,7 +31,9 @@ export interface IVolunteer {
     pincode: number;
     address1: string;
     address2: string;
-    user: IUser
+    user: IUser;
+    createdOn?: Date;
+    updatedOn? : Date;
 }
 
 export interface IProject {

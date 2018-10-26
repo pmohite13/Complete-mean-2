@@ -13,6 +13,7 @@ import { EnsureModuleLoadedOnceGuard } from '../shared/ensureModuleLoadedOnceGua
 import { AuthService } from './auth.service';
 import { AuthGuardService } from './auth-guard.service';
 import { RegisterService } from './register.service';
+import { ValidationService } from '../shared/validation.service';
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import { RegisterService } from './register.service';
     //   headerName: 'My-X-XSRF-TOKEN',
     // })
   ],
-  providers: [DataService, DataFilterService, Sorter, TrackByService, AuthService, AuthGuardService, RegisterService]
+  providers: [DataService, DataFilterService, Sorter, TrackByService, AuthService, AuthGuardService, RegisterService, ValidationService]
 })
 export class CoreModule extends EnsureModuleLoadedOnceGuard {    //Ensure that CoreModule is only loaded into AppModule
 

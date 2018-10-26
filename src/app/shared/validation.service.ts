@@ -2,7 +2,7 @@
 import { AbstractControl } from '@angular/forms';
 
 export class ValidationService {
-     
+
     static getValidatorErrorMessage(code: string) {
         let config = {
             'required': 'Required',
@@ -21,7 +21,7 @@ export class ValidationService {
             return { 'invalidCreditCard': true };
         }
     }
-     
+
     static emailValidator(control: AbstractControl) {
         // RFC 2822 compliant regex
         if (control.value.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)) {
@@ -30,11 +30,19 @@ export class ValidationService {
             return { 'invalidEmailAddress': true };
         }
     }
-     
+
+    static phoneNumberValidator(control: AbstractControl) {
+        if (control.value.match(/\+?\d[\d -]{8,12}\d/)) {
+            return null;
+        } else {
+            return { 'invalidPhoneNumber': true };
+        }
+    }
+
     static passwordValidator(control: AbstractControl) {
         // {6,100}           - Assert password is between 6 and 100 characters
         // (?=.*[0-9])       - Assert a string has at least one number
-        if (control.value.match(/^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{6,100}$/)) {
+        if (control.value.match(/^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{8,100}$/)) {
             return null;
         } else {
             return { 'invalidPassword': true };

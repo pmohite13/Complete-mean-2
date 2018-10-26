@@ -1,91 +1,98 @@
-<mat-card>
-  <mat-card-header class="info-color white-text text-center py-4">
-    <h5>
-      <strong>Volunteer (*Required)</strong>
-    </h5>
-  </mat-card-header>
-  <mat-card-content>
-    <form class="example-container" [formGroup]="volunteerFormGroup">     
+<div *ngIf="currMode === 'edit' && !volunteer">
+  <mat-spinner></mat-spinner>
+</div>
 
-      <div style="margin-top:20px;">
-        <label>Prefix*: </label>
-        <mat-radio-group class="ml5" [formControl]="volunteerFormGroup.controls.prefix">
-          <mat-radio-button value="1">Mr</mat-radio-button>
-          <mat-radio-button value="2">Ms</mat-radio-button>
-          <mat-radio-button value="3">Other</mat-radio-button>
-        </mat-radio-group>
-      </div>
+<div *ngIf="currMode === 'add' || (currMode === 'edit' && volunteer)">
+  <mat-card>
+    <mat-card-header class="info-color white-text text-center py-4">
+      <h5>
+        <strong>{{title}} Volunteer (*Required)</strong>
+      </h5>
+    </mat-card-header>
+    <mat-card-content>
+      <form class="example-container" [formGroup]="volunteerFormGroup">
 
-      <mat-form-field>
-        <input matInput [formControl]="volunteerFormGroup.controls.dateOfBirth" [matDatepicker]="dateOfBirth" [max]="maxDate"
-          placeholder="Date of Birth*" [errorStateMatcher]="matcher">
-        <mat-hint class="hint-fonts">Minimum Age is 18 years!</mat-hint>
-        <mat-datepicker-toggle matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
-        <mat-datepicker #dateOfBirth></mat-datepicker>
-        <mat-error *ngIf="volunteerFormGroup.controls.dateOfBirth.hasError('required')">
-          Date of Birth is <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
+        <div style="margin-top:20px;">
+          <label>Prefix*: </label>
+          <mat-radio-group class="ml5" [formControl]="volunteerFormGroup.controls.prefix">
+            <mat-radio-button value="1">Mr</mat-radio-button>
+            <mat-radio-button value="2">Ms</mat-radio-button>
+            <mat-radio-button value="3">Other</mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+        <mat-form-field>
+          <input matInput [formControl]="volunteerFormGroup.controls.dateOfBirth" [matDatepicker]="dateOfBirth" [max]="maxDate"
+            placeholder="Date of Birth*" [errorStateMatcher]="matcher">
+          <mat-hint class="hint-fonts">Minimum Age is 18 years!</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
+          <mat-datepicker #dateOfBirth></mat-datepicker>
+          <mat-error *ngIf="volunteerFormGroup.controls.dateOfBirth.hasError('required')">
+            Date of Birth is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
 
 
-      <div class="mt10">
-        <label>Gender*: </label>
-        <mat-radio-group class="ml5" [formControl]="volunteerFormGroup.controls.gender">
-          <mat-radio-button value="1">Male</mat-radio-button>
-          <mat-radio-button value="2">Female</mat-radio-button>
-          <mat-radio-button value="3">Other</mat-radio-button>
-        </mat-radio-group>
-      </div>
+        <div class="mt10">
+          <label>Gender*: </label>
+          <mat-radio-group class="ml5" [formControl]="volunteerFormGroup.controls.gender">
+            <mat-radio-button value="1">Male</mat-radio-button>
+            <mat-radio-button value="2">Female</mat-radio-button>
+            <mat-radio-button value="3">Other</mat-radio-button>
+          </mat-radio-group>
+        </div>
 
-      <mat-form-field>
-        <mat-select placeholder="I am interested to volunteer in*" [formControl]="volunteerFormGroup.controls.workAreas"
-          multiple>
-          <mat-option *ngFor="let workArea of workAreas" [value]="workArea">{{workArea.name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="I am interested to volunteer in*" [formControl]="volunteerFormGroup.controls.workAreas"
+            multiple>
+            <mat-option *ngFor="let workArea of workAreas" [value]="workArea">{{workArea.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
 
-      <mat-form-field>
-        <mat-select placeholder="Qualification*" [formControl]="volunteerFormGroup.controls.qualification" (selectionChange)="qualificationChange($event)">
-          <mat-option *ngFor="let qualification of qualifications" [value]="qualification">
-            {{qualification.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="Qualification*" [formControl]="volunteerFormGroup.controls.qualification"
+            (selectionChange)="qualificationChange($event)">
+            <mat-option *ngFor="let qualification of qualifications" [value]="qualification">
+              {{qualification.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-      <mat-form-field>
-        <textarea matInput [formControl]="volunteerFormGroup.controls.address1" placeholder="Address 1"></textarea>
-      </mat-form-field>
+        <mat-form-field>
+          <textarea matInput [formControl]="volunteerFormGroup.controls.address1" placeholder="Address 1"></textarea>
+        </mat-form-field>
 
-      <mat-form-field>
-        <textarea matInput [formControl]="volunteerFormGroup.controls.address2" placeholder="Address 2"></textarea>
-      </mat-form-field>
+        <mat-form-field>
+          <textarea matInput [formControl]="volunteerFormGroup.controls.address2" placeholder="Address 2"></textarea>
+        </mat-form-field>
 
-      <mat-form-field>
-        <input matInput [formControl]="volunteerFormGroup.controls.pincode" (onkeypress)="pincodeKeyUp($event)"
-          placeholder="Pincode*">
-      </mat-form-field>
+        <mat-form-field>
+          <input matInput [formControl]="volunteerFormGroup.controls.pincode" (onkeypress)="pincodeKeyUp($event)"
+            placeholder="Pincode*">
+        </mat-form-field>
 
-      <mat-form-field>
-        <mat-select [formControl]="volunteerFormGroup.controls.state" placeholder="State*" (selectionChange)="stateChange($event.value)">
-          <mat-option *ngFor="let state of states" [value]="state">
-            {{state.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+        <mat-form-field>
+          <mat-select [formControl]="volunteerFormGroup.controls.state" placeholder="State*" (selectionChange)="stateChange($event.value)">
+            <mat-option *ngFor="let state of states" [value]="state">
+              {{state.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-      <mat-form-field>
-        <mat-select [formControl]="volunteerFormGroup.controls.city" placeholder="City*">
-          <mat-option *ngFor="let city of cities" [value]="city">
-            {{city.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+        <mat-form-field>
+          <mat-select [formControl]="volunteerFormGroup.controls.city" placeholder="City*">
+            <mat-option *ngFor="let city of cities" [value]="city">
+              {{city.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-      <!-- Sign up button -->
-      <div class="text-center">
-        <button mat-raised-button color="primary" (click)="submit()">Finish</button>
-      </div>
-    </form>
-  </mat-card-content>
+        <!-- Finish up button -->
+        <div class="text-center">
+          <button mat-raised-button color="primary" (click)="submit()">Finish</button>
+        </div>
+      </form>
+    </mat-card-content>
 
-</mat-card>
+  </mat-card>
+</div>

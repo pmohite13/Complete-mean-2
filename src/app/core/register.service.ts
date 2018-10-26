@@ -45,14 +45,22 @@ export class RegisterService {
 
 
     private handleError(error: HttpErrorResponse) {
+        debugger;
         console.error('server error:', error);
         if (error.error instanceof Error) {
-            let errMessage = error.error.message;
-            return Observable.throw(errMessage);
+            debugger;
+            //let errMessage = error.error.message;
+            return Observable.throw(error);
             // Use the following instead if using lite-server
             //return Observable.throw(err.text() || 'backend server error');
         }
         return Observable.throw(error || 'Node.js server error');
     }
+
+    // private handleError(error: HttpErrorResponse) {
+    //     debugger;
+    //     console.error('server error:', error);
+    //     return Observable.throw(error);       
+    // }
 
 }

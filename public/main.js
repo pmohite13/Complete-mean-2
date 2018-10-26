@@ -605,6 +605,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./auth.service */ "./src/app/core/auth.service.ts");
 /* harmony import */ var _auth_guard_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./auth-guard.service */ "./src/app/core/auth-guard.service.ts");
 /* harmony import */ var _register_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./register.service */ "./src/app/core/register.service.ts");
+/* harmony import */ var _shared_validation_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../shared/validation.service */ "./src/app/shared/validation.service.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -640,6 +641,7 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
+
 var CoreModule = /** @class */ (function (_super) {
     __extends(CoreModule, _super);
     //Looks for the module in the parent injector to see if it's already been loaded (only want it loaded once)
@@ -652,7 +654,7 @@ var CoreModule = /** @class */ (function (_super) {
                 //Can use with Angular 4.3+ to 
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClientModule"],
             ],
-            providers: [_data_service__WEBPACK_IMPORTED_MODULE_2__["DataService"], _data_filter_service__WEBPACK_IMPORTED_MODULE_3__["DataFilterService"], _sorter__WEBPACK_IMPORTED_MODULE_4__["Sorter"], _trackby_service__WEBPACK_IMPORTED_MODULE_5__["TrackByService"], _auth_service__WEBPACK_IMPORTED_MODULE_7__["AuthService"], _auth_guard_service__WEBPACK_IMPORTED_MODULE_8__["AuthGuardService"], _register_service__WEBPACK_IMPORTED_MODULE_9__["RegisterService"]]
+            providers: [_data_service__WEBPACK_IMPORTED_MODULE_2__["DataService"], _data_filter_service__WEBPACK_IMPORTED_MODULE_3__["DataFilterService"], _sorter__WEBPACK_IMPORTED_MODULE_4__["Sorter"], _trackby_service__WEBPACK_IMPORTED_MODULE_5__["TrackByService"], _auth_service__WEBPACK_IMPORTED_MODULE_7__["AuthService"], _auth_guard_service__WEBPACK_IMPORTED_MODULE_8__["AuthGuardService"], _register_service__WEBPACK_IMPORTED_MODULE_9__["RegisterService"], _shared_validation_service__WEBPACK_IMPORTED_MODULE_10__["ValidationService"]]
         }),
         __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"])()), __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["SkipSelf"])()),
         __metadata("design:paramtypes", [CoreModule])
@@ -876,6 +878,13 @@ var DataService = /** @class */ (function () {
             return data.customer;
         }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
+    DataService.prototype.updateVolunteer = function (volunteer) {
+        return this.http.put(this.baseVolunteerUrl + '/' + volunteer._id, volunteer)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (data) {
+            console.log('updateVolunteer status: ' + data.status);
+            return data.volunteer;
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
+    };
     DataService.prototype.deleteCustomer = function (id) {
         return this.http.delete(this.baseUrl + '/' + id)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
@@ -981,10 +990,12 @@ var RegisterService = /** @class */ (function () {
         }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
     RegisterService.prototype.handleError = function (error) {
+        debugger;
         console.error('server error:', error);
         if (error.error instanceof Error) {
-            var errMessage = error.error.message;
-            return rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"].throw(errMessage);
+            debugger;
+            //let errMessage = error.error.message;
+            return rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"].throw(error);
             // Use the following instead if using lite-server
             //return Observable.throw(err.text() || 'backend server error');
         }
@@ -1563,7 +1574,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<button mat-button>\r\n  <mat-icon>face</mat-icon>\r\n  Click me!\r\n</button>\r\n<mat-checkbox>Check me!</mat-checkbox>\r\n\r\n<mat-horizontal-stepper>\r\n  <mat-step label=\"step1\">step1</mat-step>\r\n  <mat-step label=\"step2\">step2</mat-step>\r\n</mat-horizontal-stepper>"
+module.exports = "<button mat-button>\n  <mat-icon>face</mat-icon>\n  Click me!\n</button>\n<mat-checkbox>Check me!</mat-checkbox>\n\n<mat-horizontal-stepper>\n  <mat-step label=\"step1\">step1</mat-step>\n  <mat-step label=\"step2\">step2</mat-step>\n</mat-horizontal-stepper>"
 
 /***/ }),
 
@@ -2110,10 +2121,18 @@ var ValidationService = /** @class */ (function () {
             return { 'invalidEmailAddress': true };
         }
     };
+    ValidationService.phoneNumberValidator = function (control) {
+        if (control.value.match(/\+?\d[\d -]{8,12}\d/)) {
+            return null;
+        }
+        else {
+            return { 'invalidPhoneNumber': true };
+        }
+    };
     ValidationService.passwordValidator = function (control) {
         // {6,100}           - Assert password is between 6 and 100 characters
         // (?=.*[0-9])       - Assert a string has at least one number
-        if (control.value.match(/^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{6,100}$/)) {
+        if (control.value.match(/^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{8,100}$/)) {
             return null;
         }
         else {
@@ -2184,7 +2203,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\practice\Complete-mean-2\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\USER\AngularCLI-NodeJS-MongoDB-CustomersService\src\main.ts */"./src/main.ts");
 
 
 /***/ })

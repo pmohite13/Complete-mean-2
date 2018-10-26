@@ -142,6 +142,18 @@ export class DataService {
             );
     }
 
+
+    updateVolunteer(volunteer: IVolunteer): Observable<IVolunteer> {
+        return this.http.put<IVolunteerResponse>(this.baseVolunteerUrl + '/' + volunteer._id, volunteer)
+            .pipe(
+                map((data) => {
+                    console.log('updateVolunteer status: ' + data.status);
+                    return data.volunteer;
+                }),
+                catchError(this.handleError)
+            );
+    }
+
     deleteCustomer(id: string): Observable<boolean> {
         return this.http.delete<boolean>(this.baseUrl + '/' + id)
             .pipe(

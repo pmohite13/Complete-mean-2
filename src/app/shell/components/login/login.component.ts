@@ -5,6 +5,7 @@ import { RegisterService } from '../../../core/register.service';
 import { IUser, IAuthResponse, IVolunteer } from '../../../shared/interfaces';
 import { MatIcon } from '@angular/material';
 import { DataService } from '../../../core/data.service';
+import { ValidationService } from '../../../shared/validation.service';
 
 @Component({
   selector: 'app-login',
@@ -21,11 +22,13 @@ export class LoginComponent implements OnInit {
   @ViewChild(MatIcon) visibilityIconOff: MatIcon;
   showPassword: boolean = true;
   volunteer: IVolunteer;
+  errorMessage: string = null;
 
   constructor(private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private registerService: RegisterService,
     private dataService: DataService,
+    private validationService: ValidationService,
     private router: Router) {
     this.buildFormGroup();
   }
@@ -41,11 +44,14 @@ export class LoginComponent implements OnInit {
   private buildFormGroup() {
     this.loginFormGroup = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      password: ['', [Validators.required, ValidationService.passwordValidator]]
     });
   }
 
+
+
   public togglePassword(toggle: boolean) {
+    debugger;
     this.showPassword = !toggle;
   }
 
@@ -80,7 +86,13 @@ export class LoginComponent implements OnInit {
           // this.errorMessage = 'Unable to add customer';
         }
       },
-        (err) => console.log(err));
+        (err) => {
+          debugger;
+          this.errorMessage = 'Wrong credential. Try again or click Forgot password to reset it.';
+          // if (err.status === 401) {
+          //   this.errorMessage = 'Wrong credential. Try again or click Forgot password to reset it.';
+          // }
+        });
   }
 
 }

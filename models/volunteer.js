@@ -7,9 +7,9 @@ const mongoose = require('mongoose'),
   Qualification = require('./qualification');
 
 const VolunteerSchema = new Schema({
-  prefix: { type: Number, required: true, trim: true },
+  prefix: { type: String, required: true, trim: true },
   dateOfBirth: { type: Date, required: true, trim: true },
-  gender: { type: Number, required: true, trim: true },
+  gender: { type: String, required: true, trim: true },
   workAreas: [WorkArea.schema],
   qualification: Qualification.schema,
   qualificationId: { type: Number, required: true },
@@ -20,7 +20,9 @@ const VolunteerSchema = new Schema({
   stateId: { type: Number, required: true },
   city: City.schema,
   cityId: { type: Number, required: true },
-  user: User.schema
+  user: User.schema,
+  createdOn: { type: Date, default: new Date() },
+  updatedOn: { type: Date }
 });
 
 

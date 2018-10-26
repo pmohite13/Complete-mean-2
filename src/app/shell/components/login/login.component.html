@@ -16,7 +16,10 @@
 
       <!-- E-mail -->
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Email" [formControl]="loginFormGroup.controls.email" [errorStateMatcher]="matcher">
+        <!-- <mat-icon  #visibilityIcon class="tb-icon" (click)="togglePassword()" matSuffix>
+              {{showPassword ? visibility : visibility_off}}
+            </mat-icon> -->
+        <input matInput placeholder="Email" [formControl]="loginFormGroup.controls.email">
         <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
         <mat-error *ngIf="loginFormGroup.controls.email.hasError('email') && !loginFormGroup.controls.email.hasError('required')">
           Please enter a valid email address
@@ -32,14 +35,20 @@
           <mat-form-field>
 
             <input [type]="showPassword.checked ? 'text' : 'password'" matInput placeholder="New password"
-              [formControl]="loginFormGroup.controls.password" [errorStateMatcher]="matcher">
-            <mat-icon *ngIf="showPassword" #visibilityIcon class="tb-icon" (click)="togglePassword()" matSuffix>
-              {{showPassword ? visibility : visibility_off}}
-            </mat-icon>
+              [formControl]="loginFormGroup.controls.password">
+
             <!-- <mat-icon *ngIf="!showPassword" #visibilityIconOff class="tb-icon" (click)="togglePassword()" matSuffix>visibility_off</mat-icon> -->
-            <mat-error *ngIf="loginFormGroup.controls.password.hasError('required', 'password')">
-              Please enter your new password
-            </mat-error>
+            <div class="mb10">
+              <mat-error *ngIf="loginFormGroup.controls.password.hasError('minlength') && !loginFormGroup.controls.password.hasError('required')">
+                minimum length of password is 8 characters
+              </mat-error>
+              <mat-error *ngIf="loginFormGroup.controls.password.hasError('invalidPassword') && !loginFormGroup.controls.password.hasError('required')">
+                  password must be at least 8 characters and alphanumeric
+              </mat-error>
+              <mat-error *ngIf="loginFormGroup.controls.password.hasError('required')">
+                Please enter your password
+              </mat-error>
+            </div>
           </mat-form-field>
         </div>
         <div class="col-lg-1">
@@ -49,7 +58,7 @@
       <div style="margin-bottom:20px;">
         <div>
           <!-- Remember me -->
-          <mat-checkbox>Remember me</mat-checkbox>
+          <!-- <mat-checkbox>Remember me</mat-checkbox> -->
         </div>
         <div>
           <!-- Forgot password -->
@@ -59,8 +68,11 @@
 
       <!-- Sign in button -->
       <div class="text-center" style="margin-bottom:20px;">
-        <button mat-raised-button color="primary" (click)="loginUser()">Login</button>
+        <button mat-raised-button color="primary" (click)="loginUser()" [disabled]="!loginFormGroup.valid">Login</button>
+        <!-- <button mat-raised-button color="primary" (click)="togglePassword()">Test</button> -->
       </div>
+
+      <mat-error *ngIf="(errorMessage)">{{errorMessage}}</mat-error>
 
       <!-- Register -->
       <p>Not a member?

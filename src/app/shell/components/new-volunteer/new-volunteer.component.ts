@@ -40,6 +40,9 @@ export class NewVolunteerComponent implements OnInit {
   qualifications: IQualification[];
   user: IUser;
   volunteer: IVolunteer;
+  currQualification: IQualification[];
+  id: string;
+  title: string;
 
   constructor(private formBuilder: FormBuilder,
     private dataService: DataService,
@@ -50,22 +53,27 @@ export class NewVolunteerComponent implements OnInit {
 
   ngOnInit() {
     debugger;
-    let id = this.route.snapshot.params['id'];
+    this.id = this.route.snapshot.params['id'];
     this.getQualifications();
+    this.getStates();
+    this.getWorkAreas();
 
-    if (id !== '0') {
+    if (this.id !== '0') {
       this.currMode = 'edit';
+      this.title = "Edit";
       this.getUserAndVolunteer();
     }
     else {
+      this.currMode = 'add';
+      this.title = "Create";
       this.getUser();
     }
-    this.getStates();
-    this.getWorkAreas();
+
+
     this.setMinDate();
 
 
-    this.currMode = 'add';
+
   }
 
   private getUser() {
@@ -91,26 +99,33 @@ export class NewVolunteerComponent implements OnInit {
             debugger;
             this.volunteer = volunteer[0];
             if (this.volunteer) {
-              let qualification = this.qualifications.filter(q => q.id === this.volunteer.qualificationId);
-              this.volunteerFormGroup.patchValue({
-                prefix: this.volunteer.prefix,
-                dateOfBirth: this.volunteer.dateOfBirth,
-                gender: this.volunteer.gender,
-                workAreas: this.volunteer.workAreas,
-                qualification: qualification[0], //this.volunteer.qualification,
-                // qualification: { 'id': 4, 'name': "Masters" ,'_id':'5bd1bbd4bf3da88b50088661', '__v' : 0},
-                address1: this.volunteer.address1,
-                address2: this.volunteer.address2,
-                pincode: this.volunteer.pincode,
-                state: this.volunteer.state,
-                city: this.volunteer.city
-              });
+              this.currQualification = this.qualifications.filter(q => q.id === this.volunteer.qualificationId);
+              let state = this.states.filter(s => s.id === this.volunteer.stateId);
+              this.stateChange(state[0]);
             }
 
           },
             (err) => console.log(err));
       },
         (err) => console.log(err));
+  }
+
+  private patchVolunteer(state: IState) {
+    debugger;
+    let city = this.cities.filter(c => c.id === this.volunteer.cityId);
+    let selectedWorkAreas = this.workAreas.filter(wa => this.volunteer.workAreas.some(v => v.id === wa.id));
+    this.volunteerFormGroup.patchValue({
+      prefix: this.volunteer.prefix,
+      dateOfBirth: this.volunteer.dateOfBirth,
+      gender: this.volunteer.gender,
+      workAreas: selectedWorkAreas,
+      qualification: this.currQualification[0],
+      address1: this.volunteer.address1,
+      address2: this.volunteer.address2,
+      pincode: this.volunteer.pincode,
+      state: state,
+      city: city[0]
+    });
   }
 
   public qualificationChange(qualification) {
@@ -150,7 +165,11 @@ export class NewVolunteerComponent implements OnInit {
   public stateChange(state: IState): any {
     this.dataService.getCitiesForState(state.id)
       .subscribe((cities: ICity[]) => {
+        debugger;
         this.cities = cities;
+        if (this.currMode === 'edit') {
+          this.patchVolunteer(state);
+        }
       },
         (err) => console.log(err));
   }
@@ -184,17 +203,35 @@ export class NewVolunteerComponent implements OnInit {
     volunteer.qualificationId = volunteer.qualification.id;
     volunteer.user = this.user;
 
-    this.dataService.insertVolunteer(volunteer)
-      .subscribe((volunteer: IVolunteer) => {
-        debugger;
-        if (volunteer) {
-          this.router.navigate(['shell/volunteerProfile']);
-        }
-        else {
-          //this.errorMessage = 'Unable to add customer';
-        }
-      },
-        (err) => console.log(err));
+    if (this.currMode === 'edit') {
+      debugger;
+      volunteer._id = this.id;
+      volunteer.updatedOn = new Date();
+      this.dataService.updateVolunteer(volunteer)
+        .subscribe((volunteer: IVolunteer) => {
+          if (volunteer) {
+            this.router.navigate(['shell/volunteerProfile']);
+          }
+          else {
+            //this.errorMessage = 'Unable to save customer';
+          }
+        },
+          (err) => console.log(err));
+    }
+    else {
+      this.dataService.insertVolunteer(volunteer)
+        .subscribe((volunteer: IVolunteer) => {
+          debugger;
+          if (volunteer) {
+            this.router.navigate(['shell/volunteerProfile']);
+          }
+          else {
+            //this.errorMessage = 'Unable to add customer';
+          }
+        },
+          (err) => console.log(err));
+    }
+
 
 
   }

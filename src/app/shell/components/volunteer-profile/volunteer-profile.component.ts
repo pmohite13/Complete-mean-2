@@ -8,21 +8,21 @@ import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
 export interface PeriodicElement {
   name: string;
   position: number;
-  weight: number;
-  symbol: string;
+  weight: string;
+  symbol: Date;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
+  { position: 1, name: 'Organization 1', weight: 'Project 1', symbol: new Date() },
+  { position: 2, name: 'Organization 2', weight: 'Project 2', symbol: new Date() },
+  { position: 3, name: 'Organization 3', weight: 'Project 3', symbol: new Date() },
+  { position: 4, name: 'Organization 4', weight: 'Project 4', symbol: new Date() },
+  { position: 5, name: 'Organization 5', weight: 'Project 5', symbol: new Date() },
+  { position: 6, name: 'Organization 6', weight: 'Project 6', symbol: new Date() },
+  { position: 7, name: 'Organization 7', weight: 'Project 7', symbol: new Date() },
+  { position: 8, name: 'Organization 8', weight: 'Project 8', symbol: new Date() },
+  { position: 9, name: 'Organization 9', weight: 'Project 9', symbol: new Date() },
+  { position: 10, name: 'Organization 10', weight: 'Project 10', symbol: new Date() },
 ];
 @Component({
   selector: 'app-volunteer-profile',
@@ -64,6 +64,6 @@ export class VolunteerProfileComponent implements OnInit {
             (err) => console.log(err));
       },
         (err) => console.log(err));
-  } 
+  }
 
 }

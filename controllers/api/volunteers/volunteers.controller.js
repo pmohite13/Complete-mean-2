@@ -8,7 +8,7 @@ class CustomersController {
        // router.get('/:id', this.getVolunteer.bind(this));
         router.get('/:user', this.getVolunteerByUser.bind(this));
         router.post('/', this.insertVolunteer.bind(this));
-        // router.put('/:id', this.updateCustomer.bind(this));
+        router.put('/:id', this.updateVolunteer.bind(this));
         // router.delete('/:id', this.deleteCustomer.bind(this));
     }
 
@@ -60,29 +60,39 @@ class CustomersController {
         });
     }
 
-    updateCustomer(req, res) {
-        console.log('*** updateCustomer');
+    updateVolunteer(req, res) {
+        console.log('*** updateVolunteer');
         console.log('*** req.body');
         console.log(req.body);
 
-        if (!req.body || !req.body.stateId) {
-            throw new Error('Customer and associated stateId required');
+        if (!req.body || !req.body.stateId || !req.body.qualificationId || !req.body.cityId) {
+            throw new Error('Volunteer and associated properties are required');
         }
 
-        statesRepo.getState(req.body.stateId, (err, state) => {
+        // statesRepo.getState(req.body.stateId, (err, state) => {
+        //     if (err) {
+        //         console.log('*** statesRepo.getState error: ' + util.inspect(err));
+        //         res.json({ status: false, error: 'State not found', customer: null });
+        //     } else {
+        //         customersRepo.updateCustomer(req.params.id, req.body, state, (err, customer) => {
+        //             if (err) {
+        //                 console.log('*** updateCustomer error: ' + util.inspect(err));
+        //                 res.json({ status: false, error: 'Update failed', customer: null });
+        //             } else {
+        //                 console.log('*** updateCustomer ok');
+        //                 res.json({ status: true, error: null, customer: customer });
+        //             }
+        //         });
+        //     }
+        // });
+
+        volunteersRepo.updateVolunteer(req.params.id, req.body, (err, volunteer) => {
             if (err) {
-                console.log('*** statesRepo.getState error: ' + util.inspect(err));
-                res.json({ status: false, error: 'State not found', customer: null });
+                console.log('*** updateVolunteer error: ' + util.inspect(err));
+                res.json({ status: false, error: 'Update failed', volunteer: null });
             } else {
-                customersRepo.updateCustomer(req.params.id, req.body, state, (err, customer) => {
-                    if (err) {
-                        console.log('*** updateCustomer error: ' + util.inspect(err));
-                        res.json({ status: false, error: 'Update failed', customer: null });
-                    } else {
-                        console.log('*** updateCustomer ok');
-                        res.json({ status: true, error: null, customer: customer });
-                    }
-                });
+                console.log('*** updateVolunteer ok');
+                res.json({ status: true, error: null, volunteer: volunteer });
             }
         });
     }

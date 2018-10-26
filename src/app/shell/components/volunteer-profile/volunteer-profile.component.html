@@ -1,9 +1,10 @@
 <div class="row">
   <div class="col-md-3">
     <mat-card>
-      <div class="row">
+      <div class="row" *ngIf="volunteer">
         <div class="col-md-12 text-center">
-          <img src="../../../../assets/images/male.png" class="img-avatar">
+          <img [src]="((volunteer.gender === '1') ? '../../../../assets/images/male.png' : '../../../../assets/images/female.png')"
+            class="img-avatar">
         </div>
       </div>
       <div class="row" *ngIf="volunteer">
@@ -13,24 +14,24 @@
           <h5>{{volunteer.qualification.name}}</h5>
         </div>
       </div>
-      <div class="row mb10 normalized">
+      <div class="row mb10 normalized" *ngIf="volunteer">
         <div class="col-md-12">
           <hr>
           <div class="row">
             <div class="col-md-6 text-left">
-              <h4 class="list-title">Followers</h4>
+              <h4 class="list-title">Member Since</h4>
             </div>
             <div class="col-md-6 text-right">
-              1,322
+              {{volunteer.createdOn | date: 'mediumDate'}}
             </div>
           </div>
           <hr>
           <div class="row">
             <div class="col-md-6 text-left">
-              <h4 class="list-title">Friends</h4>
+              <h4 class="list-title">Projects Completed</h4>
             </div>
             <div class="col-md-6 text-right">
-              1,322
+              4
             </div>
           </div>
           <hr>
@@ -90,20 +91,20 @@
 
             <!-- Name Column -->
             <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Organization </th>
               <td mat-cell *matCellDef="let element"> {{element.name}} </td>
             </ng-container>
 
             <!-- Weight Column -->
             <ng-container matColumnDef="weight">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Weight </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Project Name </th>
               <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
             </ng-container>
 
             <!-- Symbol Column -->
             <ng-container matColumnDef="symbol">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </th>
-              <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Applied On </th>
+              <td mat-cell *matCellDef="let element"> {{element.symbol | date: 'mediumDate'}} </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
