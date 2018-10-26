@@ -51,7 +51,7 @@ export class NewVolunteerComponent implements OnInit {
   ngOnInit() {
     debugger;
     let id = this.route.snapshot.params['id'];
-
+    this.getQualifications();
 
     if (id !== '0') {
       this.currMode = 'edit';
@@ -61,7 +61,6 @@ export class NewVolunteerComponent implements OnInit {
       this.getUser();
     }
     this.getStates();
-    // this.getQualifications();
     this.getWorkAreas();
     this.setMinDate();
 
@@ -91,20 +90,23 @@ export class NewVolunteerComponent implements OnInit {
           .subscribe((volunteer: IVolunteer) => {
             debugger;
             this.volunteer = volunteer[0];
-            this.getQualifications();
-            this.volunteerFormGroup.patchValue({
-              prefix: this.volunteer.prefix,
-              dateOfBirth: this.volunteer.dateOfBirth,
-              gender: this.volunteer.gender,
-              workAreas: this.volunteer.workAreas,
-              qualification: this.volunteer.qualification,
-              // qualification: { 'id': 4, 'name': "Masters" ,'_id':'5bd1bbd4bf3da88b50088661', '__v' : 0},
-              address1: this.volunteer.address1,
-              address2: this.volunteer.address2,
-              pincode: this.volunteer.pincode,
-              state: this.volunteer.state,
-              city: this.volunteer.city
-            });
+            if (this.volunteer) {
+              let qualification = this.qualifications.filter(q => q.id === this.volunteer.qualificationId);
+              this.volunteerFormGroup.patchValue({
+                prefix: this.volunteer.prefix,
+                dateOfBirth: this.volunteer.dateOfBirth,
+                gender: this.volunteer.gender,
+                workAreas: this.volunteer.workAreas,
+                qualification: qualification[0], //this.volunteer.qualification,
+                // qualification: { 'id': 4, 'name': "Masters" ,'_id':'5bd1bbd4bf3da88b50088661', '__v' : 0},
+                address1: this.volunteer.address1,
+                address2: this.volunteer.address2,
+                pincode: this.volunteer.pincode,
+                state: this.volunteer.state,
+                city: this.volunteer.city
+              });
+            }
+
           },
             (err) => console.log(err));
       },
@@ -161,6 +163,7 @@ export class NewVolunteerComponent implements OnInit {
 
   getQualifications() {
     this.dataService.getQualifications().subscribe((qualifications: IQualification[]) => {
+      debugger;
       return this.qualifications = qualifications
     });
   }

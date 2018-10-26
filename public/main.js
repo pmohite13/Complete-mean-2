@@ -1563,7 +1563,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<button mat-button>\n  <mat-icon>face</mat-icon>\n  Click me!\n</button>\n<mat-checkbox>Check me!</mat-checkbox>\n\n<mat-horizontal-stepper>\n  <mat-step label=\"step1\">step1</mat-step>\n  <mat-step label=\"step2\">step2</mat-step>\n</mat-horizontal-stepper>"
+module.exports = "<button mat-button>\r\n  <mat-icon>face</mat-icon>\r\n  Click me!\r\n</button>\r\n<mat-checkbox>Check me!</mat-checkbox>\r\n\r\n<mat-horizontal-stepper>\r\n  <mat-step label=\"step1\">step1</mat-step>\r\n  <mat-step label=\"step2\">step2</mat-step>\r\n</mat-horizontal-stepper>"
 
 /***/ }),
 
@@ -2184,7 +2184,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\USER\AngularCLI-NodeJS-MongoDB-CustomersService\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! D:\practice\Complete-mean-2\src\main.ts */"./src/main.ts");
 
 
 /***/ })
